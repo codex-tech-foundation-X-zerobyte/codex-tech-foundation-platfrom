@@ -1,0 +1,26 @@
+.ctf-team-page { padding: var(--space-20) 0 var(--space-24); }
+.ctf-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+.ctf-team-card {
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-1);
+  transition: border-color var(--duration-base) var(--ease-out);
+}
+.ctf-team-card:hover { border-color: var(--border-accent); }
+.ctf-team-card h3 { margin-top: var(--space-4); }
+.ctf-team-card > span { display: block; font-size: var(--text-xs); color: var(--accent-7); margin-top: var(--space-1); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
+.ctf-team-card p { margin-top: var(--space-3); font-size: var(--text-sm); color: var(--text-tertiary); }
+.ctf-team-card__skills { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+.ctf-team-card__skills span { font-size: var(--text-2xs); padding: 3px var(--space-2); background: var(--surface-2); border-radius: var(--radius-sm); color: var(--text-faint); }
+
+@media (max-width: 900px) {
+  .ctf-team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .ctf-team-grid { grid-template-columns: 1fr; }
+}
