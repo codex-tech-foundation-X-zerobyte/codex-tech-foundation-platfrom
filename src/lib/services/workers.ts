@@ -20,6 +20,17 @@ export async function listWorkers() {
   return { data: rows as WorkerRow[], error: null }
 }
 
+<<<<<<< HEAD
+=======
+export async function getMyWorkerProfile() {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  if (!user) return { data: null as WorkerProfile | null, error: null }
+  const { data, error } = await supabase.from('worker_profiles').select('*').eq('user_id', user.id).maybeSingle()
+  return { data: data as WorkerProfile | null, error: toError(error) }
+}
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
 export async function updateWorkerStatus(userId: string, status: WorkerProfile['status']) {
   const { error } = await supabase.from('worker_profiles').update({ status }).eq('user_id', userId)
   return { error: toError(error) }

@@ -2,7 +2,11 @@ import type { ReactNode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import {
   Briefcase, ClipboardList, FolderKanban, FolderOpen, Inbox,
+<<<<<<< HEAD
   Newspaper, ShieldCheck, Users, Wrench,
+=======
+  Newspaper, ShieldCheck, Users,
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
 } from 'lucide-react'
 import { AuthProvider, useAuth } from './lib/auth'
 import { ToastProvider } from './components/ui'
@@ -13,6 +17,10 @@ import { ScaffoldPage } from './pages/ScaffoldPage'
 import { NotificationsPage } from './pages/NotificationsPage'
 import { ResourcesManager } from './pages/ResourcesManager'
 import { ChatPage } from './pages/ChatPage'
+<<<<<<< HEAD
+=======
+import { IncomingCallListener } from './components/IncomingCallListener'
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
 import { BlogAdminList } from './pages/cms/BlogAdminList'
 import { BlogEditor } from './pages/cms/BlogEditor'
 import { CaseStudyAdminList } from './pages/cms/CaseStudyAdminList'
@@ -24,6 +32,12 @@ import { CareerEditor } from './pages/cms/CareerEditor'
 import { AdminAudit } from './pages/admin/AdminAudit'
 import { AdminApplications } from './pages/admin/AdminApplications'
 import { AdminClients } from './pages/admin/AdminClients'
+<<<<<<< HEAD
+=======
+import { AdminProjects } from './pages/admin/AdminProjects'
+import { AccountSettings } from './pages/AccountSettings'
+import { LeadsPage } from './pages/LeadsPage'
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
 
 import { Landing } from './pages/public/Landing'
 import { ProjectsList } from './pages/public/ProjectsList'
@@ -75,7 +89,11 @@ function WorkerWorkspace() {
           <Route path="projects/:id" element={<ScaffoldPage icon={FolderKanban} title="Project workspace" description="The full project workspace (tabs for milestones, files, and activity) lands in the next build phase." />} />
           <Route path="tasks" element={<WorkerTasks />} />
           <Route path="clients" element={<ScaffoldPage icon={Briefcase} title="No clients assigned" description="Clients you work with will appear here." table="clients" countLabel="clients on file" />} />
+<<<<<<< HEAD
           <Route path="leads" element={<ScaffoldPage icon={Inbox} title="No leads assigned" description="Leads routed to you will appear here." table="leads" countLabel="leads in the pipeline" />} />
+=======
+          <Route path="leads" element={<LeadsPage />} />
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
           <Route path="content/case-studies" element={<CaseStudyAdminList basePath="/worker/content/case-studies" />} />
           <Route path="content/case-studies/:id" element={<CaseStudyEditor basePath="/worker/content/case-studies" />} />
           <Route path="content/blog" element={<BlogAdminList basePath="/worker/content/blog" />} />
@@ -87,7 +105,11 @@ function WorkerWorkspace() {
           <Route path="resources" element={<ResourcesManager />} />
           <Route path="chat" element={<ChatPage />} />
           <Route path="notifications" element={<NotificationsPage />} />
+<<<<<<< HEAD
           <Route path="settings" element={<ScaffoldPage icon={Wrench} title="Settings coming next" description="Account and notification preferences are planned for a follow-up pass." />} />
+=======
+          <Route path="settings" element={<AccountSettings />} />
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
         </Routes>
       </WorkspaceLayout>
     </ProtectedRoute>
@@ -119,9 +141,16 @@ function AdminWorkspace() {
           <Route path="roles" element={<SuperAdminOnly><AdminRoles /></SuperAdminOnly>} />
           <Route path="clients" element={<AdminClients />} />
           <Route path="applications" element={<AdminApplications />} />
+<<<<<<< HEAD
           <Route path="projects" element={<ScaffoldPage icon={FolderKanban} title="Project CMS coming next" description="Full project editing (status, publication, media) is planned for the CMS phase." table="projects" countLabel="projects" />} />
           <Route path="tasks" element={<ScaffoldPage icon={ClipboardList} title="Cross-project task view coming next" description="An org-wide task view is planned next." table="tasks" countLabel="tasks" />} />
           <Route path="leads" element={<ScaffoldPage icon={Inbox} title="No leads yet" description="Leads submitted through the public site will appear here." table="leads" countLabel="leads" />} />
+=======
+          <Route path="projects" element={<AdminProjects />} />
+          <Route path="projects/:id" element={<ScaffoldPage icon={FolderKanban} title="Project workspace" description="The full project workspace (tabs for milestones, files, and activity) lands in the next build phase. The project itself is real — this is only the detail view." />} />
+          <Route path="tasks" element={<ScaffoldPage icon={ClipboardList} title="Cross-project task view coming next" description="An org-wide task view is planned next." table="tasks" countLabel="tasks" />} />
+          <Route path="leads" element={<LeadsPage />} />
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
           <Route path="content" element={<Navigate to="/admin/content/blog" replace />} />
           <Route path="content/blog" element={<BlogAdminList basePath="/admin/content/blog" />} />
           <Route path="content/blog/:id" element={<BlogEditor basePath="/admin/content/blog" />} />
@@ -136,7 +165,11 @@ function AdminWorkspace() {
           <Route path="notifications" element={<NotificationsPage />} />
           <Route path="audit" element={<SuperAdminOnly><AdminAudit /></SuperAdminOnly>} />
           <Route path="security" element={<SuperAdminOnly><ScaffoldPage icon={ShieldCheck} title="Security overview coming next" description="An RLS/security posture summary is planned next." /></SuperAdminOnly>} />
+<<<<<<< HEAD
           <Route path="settings" element={<SuperAdminOnly><ScaffoldPage icon={Wrench} title="Settings coming next" description="Organisation-wide settings are planned for a follow-up pass." /></SuperAdminOnly>} />
+=======
+          <Route path="settings" element={<AccountSettings />} />
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
         </Routes>
       </WorkspaceLayout>
     </ProtectedRoute>
@@ -156,7 +189,12 @@ function ClientWorkspace() {
           <Route path="files" element={<ScaffoldPage icon={FolderOpen} title="No files yet" description="Files shared with you will appear here." />} />
           <Route path="requests" element={<ClientRequestsRoute />} />
           <Route path="maintenance" element={<ScaffoldPage icon={ShieldCheck} title="No maintenance activity" description="Support requests and maintenance updates will appear here once your project enters maintenance." />} />
+<<<<<<< HEAD
           <Route path="settings" element={<ScaffoldPage icon={Wrench} title="Settings coming next" description="Account preferences are planned for a follow-up pass." />} />
+=======
+          <Route path="notifications" element={<NotificationsPage />} />
+          <Route path="settings" element={<AccountSettings />} />
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
         </Routes>
       </WorkspaceLayout>
     </ProtectedRoute>
@@ -173,6 +211,10 @@ function ClientRequestsRoute() {
 function Shell() {
   return (
     <BrowserRouter>
+<<<<<<< HEAD
+=======
+      <IncomingCallListener />
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/what-we-build" element={<WhatWeBuild />} />

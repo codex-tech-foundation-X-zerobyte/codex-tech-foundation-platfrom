@@ -50,6 +50,21 @@ export function subscribeToChannelCalls(channelId: string, onChange: () => void)
   return channel
 }
 
+<<<<<<< HEAD
+=======
+// Live unread-notification feed for the current user — RLS on
+// `notifications` already scopes rows to `user_id = auth.uid()`, so no
+// filter is needed here (same principle as the global incoming-call
+// listener: Postgres Changes enforces RLS before any row reaches the client).
+export function subscribeToMyNotifications(onChange: () => void): RealtimeChannel {
+  const channel = supabase
+    .channel('my-notifications')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'notifications' }, () => onChange())
+    .subscribe()
+  return channel
+}
+
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
 // ── Call signaling ─────────────────────────────────────────────────────
 // Uses Realtime Broadcast, not postgres_changes: SDP offers/answers and ICE
 // candidates are ephemeral exchange messages, not data worth persisting to

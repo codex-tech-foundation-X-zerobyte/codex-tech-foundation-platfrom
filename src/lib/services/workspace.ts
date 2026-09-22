@@ -7,6 +7,14 @@ export async function listNotifications() {
   return { data: (data ?? []) as Notification[], error: toError(error) }
 }
 
+<<<<<<< HEAD
+=======
+export async function getUnreadNotificationCount() {
+  const { count, error } = await supabase.from('notifications').select('id', { count: 'exact', head: true }).is('read_at', null)
+  return { count: count ?? 0, error: toError(error) }
+}
+
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
 export async function markNotificationRead(id: string) {
   const { error } = await supabase.from('notifications').update({ read_at: new Date().toISOString() }).eq('id', id)
   return { error: toError(error) }

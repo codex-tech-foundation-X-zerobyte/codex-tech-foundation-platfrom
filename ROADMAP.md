@@ -372,6 +372,153 @@ read/unread, @mentions, reactions, message search (carried over from Pass
 5), plus an SFU for calls beyond a handful of concurrent participants and
 a TURN server for NAT traversal. See "Explicitly NOT done" below.
 
+<<<<<<< HEAD
+=======
+## Pass 7 — this round: live bug reports, not a spec
+
+Scope: four specific, user-reported bugs on a real deployment, not a
+brief. Diagnosed and fixed each one individually.
+
+**Bug fix (critical) — worker/client sessions randomly logging out.**
+`AuthProvider.refresh()` called `supabase.auth.getUser()`, which makes a
+real network round-trip to Supabase's Auth server on every call, and
+silently discarded its `error`. `onAuthStateChange` fires this on every
+`TOKEN_REFRESHED` event (roughly hourly) — any single transient network
+hiccup, rate limit, or timing overlap with the background token refresh
+made a perfectly valid session look logged-out and booted the user, even
+though nothing was actually wrong with their session. Rewrote to use
+`supabase.auth.getSession()` (reads the already-validated local session
+state, no network call) and to only ever clear the profile on an actual
+`SIGNED_OUT` event — a failed *profile* fetch no longer gets treated the
+same as a lost *session*. This is also a documented Supabase footgun:
+calling `getUser()` synchronously from inside an `onAuthStateChange`
+callback risks deadlocking with the client's own auth state machine.
+
+**Bug fix (major) — there was no way to create a project, anywhere, for
+any role.** Confirmed by reading the actual code, not assumed: `/admin/projects`
+was a `ScaffoldPage` with zero functionality, and `WorkerProjects.tsx` only
+listed projects — neither had ever had a create button or form. The RLS
+policy already allowed worker/manager/superadmin to insert into `projects`
+(since the very first migration) — this was purely a missing service
+function and UI, not a backend gap. Added `createProject()` (also adds the
+creator + chosen teammates as `project_members` and provisions the
+project's chat channel via the already-idempotent `ensureProjectChannel()`
+in one call), `updateProject()`, and member management functions to
+`projects.ts`. New shared `CreateProjectModal.tsx` used by both
+`WorkerProjects.tsx` and the new `AdminProjects.tsx` (which replaces the
+old scaffold) — one implementation, not two.
+
+**Feature (major) — real incoming-call alerts, not just a banner on the
+page you happened to have open.** The previous "call in progress · Join"
+banner only rendered inside `ChatPage` for whichever channel was currently
+selected — someone being called while anywhere else in the app had no way
+to know. New `IncomingCallListener.tsx`, mounted once at the app root
+(inside the Router, outside any one workspace), subscribes to ALL `calls`
+INSERTs with no channel filter — this is deliberate and safe, not a broad-
+access mistake: Postgres Changes still enforces `can_access_channel()` RLS
+on every row before it reaches the client, so a user only ever receives
+events for calls they can actually access. Shows a real accept/decline
+alert with the caller's name and channel; Accept deep-links to
+`/worker/chat?join=<callId>&channel=<channelId>` (or `/admin/chat`),
+which `ChatPage.tsx` now reads on mount to select the channel and join the
+already-active call directly (not call `startCall()` again, which would
+incorrectly start a second call).
+
+**Clarified, not a bug**: "a general group chat to communicate with each
+other" — this already exists. It's the `team` channel built in Pass 5
+(auto-created via `ensureTeamChannel()`, shown first in the Chat sidebar
+for every worker/manager/superadmin). It was very likely unreachable
+because of the session-logout bug above — if a session look-logged-out
+before Chat ever loaded, there was no way to discover it. Worth confirming
+it's visible now that the session bug is fixed, rather than building a
+second general-chat mechanism that would just be a duplicate of the one
+that already works.
+
+**Feature (major) — real Account Settings for all three roles, replacing
+three separate "coming next" scaffolds.** Found a real gap while doing
+this: `/admin/settings` was wrapped in `SuperAdminOnly` — a Manager had no
+settings page at all, not even to change their own password. New
+`account.ts` service (`updateOwnProfile()`, `changePassword()`,
+`getOwnEmail()`), plus `getMyWorkerProfile()`/`getMyClient()` for the
+role-specific read-only info block (Worker ID and status; organization and
+Client ID). One shared `AccountSettings.tsx` used by all three workspaces
+— display name, password change, role info — rather than three separate
+implementations. The `SuperAdminOnly` wrapper on `/admin/settings` is
+removed; organisation-wide platform configuration (the `system_settings`
+table) is a separate, still-unbuilt concern from personal account settings
+and wasn't conflated with it.
+
+**Feature (major) — real Leads management, replacing two scaffolds.**
+There was real data with nowhere to go: the public site's contact and
+start-project forms have written to `leads` since Pass 1/2 via
+`submit-lead`/`submit-contact`, but no admin UI ever existed to see,
+assign, or act on a single one of them. RLS was already correct
+(`leads.view`/`leads.manage` from the Pass 3 fix) — this was purely a
+missing schema (added `notes`, `assigned_to`) and UI gap. New
+`listLeads()`/`updateLeadStatus()`/`assignLead()`/`updateLeadNotes()` in
+`leads.ts`, and one shared `LeadsPage.tsx` (list with status filter and
+inline status change, a detail modal for notes/assignment) used by both
+Worker and Admin/Manager — RLS already scopes both identically, so one
+implementation covers both. **Not built**: converting a lead to a client
+or project — that's a real, separate feature (would need to actually
+create a `clients`/`projects` row from lead data) and wasn't forced in to
+avoid shipping something half-considered.
+
+## Pass 8 — this round: deploy targets, a critical Realtime bug, and chat/nav UX
+
+**CRITICAL bug found and fixed — `calls` and `notifications` were never
+added to the Realtime publication.** Supabase Realtime only broadcasts
+`postgres_changes` for tables explicitly added to the `supabase_realtime`
+publication — RLS correctness and client subscription code are irrelevant
+if the table isn't in that list at all. Only `messages` was ever added
+(Pass 5's migration). This means every `postgres_changes` subscription on
+`calls` since Pass 6 (`subscribeToChannelCalls`, and the global
+`IncomingCallListener` built in Pass 7) has been silently unable to fire a
+single event this whole time, regardless of how correct the surrounding
+code looked. This is very likely the actual, underlying reason incoming
+calls were never alerting anyone — independent of, and more fundamental
+than, the UI-level global-listener fix built believing the subscription
+itself already worked. Fixed with one migration adding both tables to the
+publication; also fixes the new live notification-badge feed below.
+
+**GitHub Pages — a real second deployment target, not just Vercel
+troubleshooting.** GitHub Pages has no server-side rewrite capability
+(unlike Vercel's `vercel.json`), so an SPA needs a specific, well-known
+workaround or direct navigation/refresh on any nested route 404s. Built
+the standard fix (`public/404.html` + a decode script in `index.html`'s
+`<head>`) and *verified the encode/decode round-trip with a script before
+shipping it* — including a route with both query params and a hash
+fragment — rather than trusting memory of the pattern. Also: `vite.config.ts`
+now reads `VITE_BASE_PATH` for its `base` config (GitHub Pages project
+sites serve from a subpath, Vercel serves from root); the new
+`.github/workflows/pages.yml` derives the correct subpath automatically
+from the real repo name (`github.event.repository.name`) so the same
+codebase builds correctly for both targets with no manual toggling and no
+risk of a hardcoded repo name silently breaking one target or the other.
+
+**Chat UI — WhatsApp-style alignment and real sender identity in
+groups.** Own messages now align right, others' left; sender name/avatar
+shown once per consecutive run (not repeated per message) and only in
+group channels — a DM's two participants don't need a name label, same as
+WhatsApp. Timestamp moved into the bubble itself.
+
+**Collapsible sidebars — both the main workspace nav and the Chat page's
+own channel list**, independently, each persisted to `localStorage`. Real
+finding while wiring the main sidebar's collapse: it's a CSS Grid layout,
+so the child's own `width` property doesn't control the actual column
+width — the grid track does. Caught and fixed by checking the rendered
+CSS against the grid definition rather than assuming the naive `width`
+change would work.
+
+**Notification bell — was a completely dead button, now real.** The
+existing topbar bell icon had no `onClick` at all. New
+`getUnreadNotificationCount()`, a live-updating unread badge via the newly
+publication-fixed `notifications` table (`subscribeToMyNotifications()` in
+`realtime.ts`), and a click that navigates to the already-built
+`NotificationsPage` — which also **had no route for Client at all** until
+this pass (`/client/notifications` didn't exist; only worker and admin did).
+
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
 ## Explicitly NOT done — don't assume otherwise
 
 - **Rich-text editing**: still a plain-text/lightweight-markdown editor
@@ -396,6 +543,24 @@ a TURN server for NAT traversal. See "Explicitly NOT done" below.
   The client portal's own file/update views are still placeholders —
   extending client-facing file access (`project_files`, deliverables) to
   the same real pattern is a natural next step but wasn't done here.
+<<<<<<< HEAD
+=======
+- **Developer Tools page** (QR/hash/base64/URL encode-decode utilities) —
+  requested, not built this pass.
+- **Light/Dark/System theme and the visitor-area animated background** —
+  requested, not built this pass. This is a genuinely large, cross-cutting
+  change (every surface's CSS needs a real light-mode palette, not an
+  inverted dark one) and doing it well alongside everything else in this
+  pass would have meant doing it rushed — deliberately deferred rather
+  than shipped half-considered.
+- **Still-scaffolded routes** (confirmed by reading `App.tsx` directly, not
+  guessed): Security overview, Worker profile detail, cross-project Task
+  view, project workspace detail tabs (`/worker/projects/:id`,
+  `/admin/projects/:id` — the project itself is real, this is only the
+  detail view), client-side files/updates/maintenance, organisation-wide
+  platform configuration (`system_settings` has no UI), and lead-to-client/
+  project conversion.
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
 - **Team Chat**: implemented (Pass 5) but still missing presence, typing
   indicators, read/unread state, @mentions, reactions, and message search —
   deliberately deferred to ship a working core first.

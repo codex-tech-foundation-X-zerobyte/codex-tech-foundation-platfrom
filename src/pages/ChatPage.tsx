@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+<<<<<<< HEAD
 import { Hash, MessageSquarePlus, Paperclip, Pencil, Phone, Send, Trash2, Users, Video, X } from 'lucide-react'
+=======
+import { useSearchParams } from 'react-router-dom'
+import { Hash, MessageSquarePlus, PanelLeftClose, PanelLeftOpen, Paperclip, Pencil, Phone, Send, Trash2, Users, Video, X } from 'lucide-react'
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
 import { Avatar, Button, EmptyState, Input, Modal, SkeletonRows, useToast } from '../components/ui'
 import { CallView } from '../components/CallView'
 import {
@@ -24,6 +29,10 @@ function channelLabel(channel: Channel, names: Map<string, string>, dmOtherUser:
 export function ChatPage() {
   const { profile } = useAuth()
   const { push } = useToast()
+<<<<<<< HEAD
+=======
+  const [searchParams, setSearchParams] = useSearchParams()
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
   const [channels, setChannels] = useState<Channel[] | null>(null)
   const [dmMembers, setDmMembers] = useState<Map<string, string[]>>(new Map()) // channelId -> [userIds]
   const [names, setNames] = useState<Map<string, string>>(new Map())
@@ -37,6 +46,10 @@ export function ChatPage() {
   const [pickerOpen, setPickerOpen] = useState<'dm' | 'project' | null>(null)
   const [activeCall, setActiveCall] = useState<Call | null>(null)
   const [inCall, setInCall] = useState<Call | null>(null)
+<<<<<<< HEAD
+=======
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => localStorage.getItem('ctf-chat-sidebar-collapsed') === 'true')
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
   const fileRef = useRef<HTMLInputElement>(null)
   const listEndRef = useRef<HTMLDivElement>(null)
 
@@ -67,6 +80,30 @@ export function ChatPage() {
 
   useEffect(() => { void loadChannels() }, [])
 
+<<<<<<< HEAD
+=======
+  // Deep link from IncomingCallListener's "Accept" button
+  // (?join=<callId>&channel=<channelId>) — select the channel and join the
+  // already-active call directly, rather than calling startCall() again
+  // (which would be wrong: the call already exists, we're joining it, not
+  // starting a second one).
+  useEffect(() => {
+    const joinCallId = searchParams.get('join')
+    const joinChannelId = searchParams.get('channel')
+    if (!joinCallId || !joinChannelId || channels === null) return
+    setActiveId(joinChannelId)
+    void getActiveCall(joinChannelId).then(({ data }) => {
+      if (data && data.id === joinCallId) setInCall(data)
+    })
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev)
+      next.delete('join')
+      next.delete('channel')
+      return next
+    }, { replace: true })
+  }, [searchParams, channels])
+
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
   useEffect(() => {
     if (!activeId) return
     setMessages(null)
@@ -143,6 +180,7 @@ export function ChatPage() {
   }, [channels])
 
   return (
+<<<<<<< HEAD
     <div className="ctf-chat">
       <aside className="ctf-chat__sidebar">
         <div className="ctf-chat__sidebar-head">
@@ -152,6 +190,28 @@ export function ChatPage() {
         </div>
         {channels === null && <SkeletonRows rows={3} />}
         {channels && (
+=======
+    <div className={`ctf-chat ${sidebarCollapsed ? 'ctf-chat--sidebar-collapsed' : ''}`}>
+      <aside className={`ctf-chat__sidebar ${sidebarCollapsed ? 'is-collapsed' : ''}`}>
+        <div className="ctf-chat__sidebar-head">
+          {!sidebarCollapsed && <span>Channels</span>}
+          {!sidebarCollapsed && (
+            <>
+              <button className="ctf-chat__add" onClick={() => setPickerOpen('project')} title="Open a project channel"><Hash size={14} /></button>
+              <button className="ctf-chat__add" onClick={() => setPickerOpen('dm')} title="New direct message"><MessageSquarePlus size={14} /></button>
+            </>
+          )}
+          <button
+            className="ctf-chat__add"
+            onClick={() => { const next = !sidebarCollapsed; setSidebarCollapsed(next); localStorage.setItem('ctf-chat-sidebar-collapsed', String(next)) }}
+            title={sidebarCollapsed ? 'Expand channel list' : 'Collapse channel list'}
+          >
+            {sidebarCollapsed ? <PanelLeftOpen size={14} /> : <PanelLeftClose size={14} />}
+          </button>
+        </div>
+        {!sidebarCollapsed && channels === null && <SkeletonRows rows={3} />}
+        {!sidebarCollapsed && channels && (
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
           <div className="ctf-chat__list">
             {grouped.team.map((c) => (
               <button key={c.id} className={`ctf-chat__item ${activeId === c.id ? 'is-active' : ''}`} onClick={() => setActiveId(c.id)}>
@@ -198,6 +258,7 @@ export function ChatPage() {
             <div className="ctf-chat__messages">
               {messages === null && <SkeletonRows rows={3} />}
               {messages && messages.length === 0 && <EmptyState icon={Hash} title="No messages yet" description="Say hello — this channel is empty so far." />}
+<<<<<<< HEAD
               {messages?.map((m) => (
                 <div key={m.id} className="ctf-chat__message">
                   <Avatar name={names.get(m.author_id ?? '') ?? '?'} size={28} />
@@ -233,6 +294,60 @@ export function ChatPage() {
                   )}
                 </div>
               ))}
+=======
+              {messages?.map((m, i) => {
+                const isMine = m.author_id === profile?.id
+                const prev = messages[i - 1]
+                // Sender name/avatar shown once per consecutive run from the
+                // same person — not repeated on every bubble (matches the
+                // convention in Slack/Telegram/WhatsApp group chats). Never
+                // shown for your own messages (no "You" label needed) or in
+                // a DM (only two participants — who sent what is implicit
+                // from which side of the thread it's on, same as WhatsApp).
+                const showHeader = !isMine && active?.kind !== 'dm' && (!prev || prev.author_id !== m.author_id || prev.deleted_at)
+                return (
+                  <div key={m.id} className={`ctf-chat__message ${isMine ? 'is-mine' : 'is-theirs'}`}>
+                    {!isMine && (
+                      <div className="ctf-chat__message-avatar">
+                        {showHeader ? <Avatar name={names.get(m.author_id ?? '') ?? '?'} size={28} /> : <span className="ctf-chat__avatar-spacer" />}
+                      </div>
+                    )}
+                    <div className="ctf-chat__bubble-col">
+                      {showHeader && <span className="ctf-chat__sender-name">{names.get(m.author_id ?? '') ?? 'Unknown'}</span>}
+                      <div className="ctf-chat__bubble">
+                        {m.deleted_at ? (
+                          <em className="ctf-chat__deleted">Message deleted</em>
+                        ) : editingId === m.id ? (
+                          <div className="ctf-chat__edit-row">
+                            <Input value={editDraft} onChange={(e) => setEditDraft(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') void saveEdit(); if (e.key === 'Escape') setEditingId(null) }} autoFocus />
+                            <Button size="sm" variant="primary" onClick={() => void saveEdit()}>Save</Button>
+                            <Button size="sm" variant="ghost" onClick={() => setEditingId(null)}>Cancel</Button>
+                          </div>
+                        ) : (
+                          <>
+                            {m.body && <p>{m.body}</p>}
+                            {m.attachment_name && (
+                              <button className="ctf-chat__attachment" onClick={() => void download(m)}>
+                                <Paperclip size={13} /> {m.attachment_name}
+                              </button>
+                            )}
+                          </>
+                        )}
+                        <span className="ctf-chat__bubble-time">
+                          {new Date(m.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}{m.edited_at ? ' · edited' : ''}
+                        </span>
+                      </div>
+                      {!m.deleted_at && isMine && editingId !== m.id && (
+                        <div className="ctf-chat__message-actions">
+                          <button onClick={() => startEdit(m)} title="Edit"><Pencil size={13} /></button>
+                          <button onClick={() => void remove(m)} title="Delete"><Trash2 size={13} /></button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
               <div ref={listEndRef} />
             </div>
 

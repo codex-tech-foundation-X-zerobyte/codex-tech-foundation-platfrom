@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Codex Tech Foundation</title>
+    <script>
+      // Encodes the current path/query/hash into a query string on the
+      // root URL, then redirects there. index.html's inline script (see
+      // that file) reverses this with history.replaceState before React
+      // Router ever initializes, so the user never sees the intermediate
+      // URL and React Router ends up with the correct route.
+      var basePath = '/BASE_PATH_PLACEHOLDER/'
+      var path = location.pathname.slice(basePath.length)
+      var redirect = basePath + '?/' + path.replace(/&/g, '~and~') + (location.search ? '&' + location.search.slice(1).replace(/&/g, '~and~') : '') + location.hash
+      location.replace(redirect)
+    </script>
+  </head>
+  <body></body>
+</html>

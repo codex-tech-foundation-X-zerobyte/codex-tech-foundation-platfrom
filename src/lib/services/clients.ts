@@ -38,3 +38,17 @@ export async function createClientAccount(input: CreateClientInput) {
   if (data?.error) return { data: null as CreateClientResult | null, error: new Error(data.error) }
   return { data: data as CreateClientResult, error: null }
 }
+<<<<<<< HEAD
+=======
+
+export async function getMyClient() {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  if (!user) return { data: null as Client | null, error: null }
+  const { data: link } = await supabase.from('client_users').select('client_id').eq('user_id', user.id).eq('status', 'active').maybeSingle()
+  if (!link) return { data: null as Client | null, error: null }
+  const { data, error } = await supabase.from('clients').select('*').eq('id', link.client_id).maybeSingle()
+  return { data: data as Client | null, error: toError(error) }
+}
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)

@@ -14,6 +14,29 @@
     <title>Codex Tech Foundation — Engineering, applied.</title>
     <meta name="description" content="Codex Tech Foundation designs and builds digital products, business systems, developer tools, and intelligent platforms that turn complex operations into reliable software." />
 
+<<<<<<< HEAD
+=======
+    <!--
+      Reverses the redirect from 404.html (GitHub Pages only — Vercel never
+      hits 404.html since vercel.json handles routing server-side, so this
+      script is a silent no-op there). Must run before React Router
+      initializes, which is why it's inline in <head> rather than in
+      main.tsx. See public/404.html for the encode side of this.
+      Pattern: https://github.com/rafgraph/spa-github-pages
+    -->
+    <script>
+      (function () {
+        var search = window.location.search
+        if (search[1] !== '/') return
+        var segments = search.slice(1).split('&').map(function (s) { return s.replace(/~and~/g, '&') })
+        var path = segments.shift()
+        var newSearch = segments.length ? '?' + segments.join('&') : ''
+        var newPathname = window.location.pathname.replace(/\/$/, '') + path
+        window.history.replaceState(null, '', newPathname + newSearch + window.location.hash)
+      })()
+    </script>
+
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Codex Tech Foundation" />
     <meta property="og:description" content="We build the systems behind ambitious ideas." />

@@ -258,6 +258,11 @@ export interface Lead {
   message: string
   source?: string
   status?: LeadStatus
+<<<<<<< HEAD
+=======
+  notes?: string
+  assigned_to?: string | null
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
   created_at?: string
 }
 

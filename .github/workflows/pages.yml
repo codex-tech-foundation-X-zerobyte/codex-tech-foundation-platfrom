@@ -1,0 +1,57 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm install
+      - name: Build with the correct GitHub Pages subpath
+        # A project site (the normal case: <owner>.github.io/<repo>) is
+        # served from a subpath, unlike Vercel which serves from the
+        # domain root — vite.config.ts reads VITE_BASE_PATH for exactly
+        # this. Derived from the real repo name automatically; never
+        # hardcode this, since a wrong value here silently 404s every
+        # asset on the deployed page.
+        run: npm run build
+        env:
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+      - name: Point the SPA 404 fallback at the real repo name
+        # public/404.html ships with a literal placeholder (BASE_PATH_PLACEHOLDER)
+        # because the actual path isn't known until this workflow runs —
+        # see that file's comments for what this fallback does and why an
+        # SPA needs it at all on GitHub Pages (no server-side rewrites, unlike vercel.json).
+        run: sed -i "s|/BASE_PATH_PLACEHOLDER/|/${{ github.event.repository.name }}/|g" dist/404.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
