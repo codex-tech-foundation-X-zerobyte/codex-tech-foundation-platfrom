@@ -1,0 +1,83 @@
+.ctf-btn {
+  --btn-h: 40px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--btn-h);
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  white-space: nowrap;
+  transition: border-color var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.ctf-btn__content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.ctf-btn__spinner {
+  animation: ctf-spin 0.7s linear infinite;
+}
+
+@keyframes ctf-spin {
+  to { transform: rotate(360deg); }
+}
+
+.ctf-btn--sm { --btn-h: 32px; padding: 0 var(--space-4); font-size: var(--text-xs); }
+.ctf-btn--lg { --btn-h: 48px; padding: 0 var(--space-6); font-size: var(--text-base); }
+
+.ctf-btn--primary {
+  background: var(--accent-gradient);
+  color: #f8faff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+}
+.ctf-btn--primary:hover:not(:disabled) { filter: brightness(1.08); transform: translateY(-1px); }
+.ctf-btn--primary:active:not(:disabled) { transform: translateY(0); filter: brightness(0.97); }
+
+.ctf-btn--secondary {
+  background: var(--surface-2);
+  border-color: var(--border-default);
+  color: var(--text-primary);
+}
+.ctf-btn--secondary:hover:not(:disabled) { border-color: var(--border-strong); background: var(--surface-3); }
+
+.ctf-btn--ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+.ctf-btn--ghost:hover:not(:disabled) { color: var(--text-primary); background: var(--surface-2); }
+
+.ctf-btn--danger {
+  background: var(--danger-soft);
+  border-color: var(--border-danger);
+  color: var(--danger-9);
+}
+.ctf-btn--danger:hover:not(:disabled) { background: rgba(213, 100, 95, 0.22); }
+
+.ctf-btn--icon {
+  width: var(--btn-h);
+  padding: 0;
+  background: var(--surface-2);
+  border-color: var(--border-default);
+  color: var(--text-secondary);
+}
+.ctf-btn--icon:hover:not(:disabled) { color: var(--text-primary); border-color: var(--border-strong); }
+
+.ctf-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.ctf-btn:focus-visible {
+  outline: 2px solid var(--accent-7);
+  outline-offset: 2px;
+}

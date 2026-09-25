@@ -1,0 +1,134 @@
+@import './tokens.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg-0);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a, button, select, input, textarea {
+  font: inherit;
+}
+
+button, select {
+  cursor: pointer;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+
+strong {
+  font-weight: 600;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Headings share a tight, deliberate scale — not "every heading enormous" */
+h1 { font-size: var(--text-2xl); font-weight: 700; letter-spacing: var(--tracking-tight); line-height: var(--leading-tight); }
+h2 { font-size: var(--text-xl); font-weight: 700; letter-spacing: var(--tracking-tight); line-height: var(--leading-tight); }
+h3 { font-size: var(--text-lg); font-weight: 600; line-height: var(--leading-snug); }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--accent-7);
+}
+
+.eyebrow.muted {
+  color: var(--text-tertiary);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 14px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.lead {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+  max-width: 62ch;
+}
+
+.text-link {
+  color: var(--text-tertiary);
+  font-size: var(--text-sm);
+  transition: color var(--duration-base) var(--ease-out);
+}
+.text-link:hover { color: var(--text-primary); }
+
+::selection {
+  background: var(--accent-soft-strong);
+  color: var(--text-primary);
+}
+
+/* Focus visibility — accessibility, not decoration */
+:focus-visible {
+  outline: 2px solid var(--accent-7);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.container {
+  width: min(var(--content-width), 100%);
+  margin: 0 auto;
+  padding-inline: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .container { padding-inline: var(--space-4); }
+  :root { --text-4xl: 2.5rem; --text-3xl: 2.1rem; --text-2xl: 1.75rem; }
+}

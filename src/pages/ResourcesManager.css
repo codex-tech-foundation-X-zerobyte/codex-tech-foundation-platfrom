@@ -1,0 +1,73 @@
+.ctf-resource-uploader {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-1);
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+}
+.ctf-resource-uploader > div:first-child { flex: 1; min-width: 220px; }
+.ctf-resource-uploader { position: relative; }
+.ctf-resource-uploader.is-dragging { border-color: var(--border-accent); background: var(--surface-2); }
+
+.ctf-resource-drop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 44px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-strong);
+  color: var(--text-tertiary);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 220px;
+}
+.ctf-resource-drop:hover { border-color: var(--border-accent); color: var(--text-primary); }
+
+.ctf-crumb {
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: var(--radius-sm, 4px);
+  font-size: inherit;
+  display: inline-flex;
+  align-items: center;
+}
+.ctf-crumb:hover { color: var(--text-primary); text-decoration: underline; }
+
+.ctf-resource-list { display: flex; flex-direction: column; gap: var(--space-3); }
+.ctf-resource-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-1);
+  gap: var(--space-3);
+}
+.ctf-resource-row__main {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+  min-width: 0;
+  color: inherit;
+  padding: 0;
+}
+.ctf-resource-row__main strong { display: block; }
+.ctf-resource-row span { display: block; font-size: var(--text-xs); color: var(--text-faint); margin-top: 2px; }
+.ctf-resource-row__actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+@media (max-width: 640px) {
+  .ctf-resource-row { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+}

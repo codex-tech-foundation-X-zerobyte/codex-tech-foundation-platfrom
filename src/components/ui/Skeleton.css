@@ -1,0 +1,21 @@
+.ctf-skeleton {
+  display: block;
+  background: linear-gradient(90deg, var(--surface-2) 0%, var(--surface-3) 50%, var(--surface-2) 100%);
+  background-size: 200% 100%;
+  animation: ctf-shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes ctf-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctf-skeleton { animation: none; background: var(--surface-2); }
+}
+
+.ctf-skeleton-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}

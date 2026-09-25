@@ -1,0 +1,84 @@
+.ctf-animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ctf-animated-bg__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+  will-change: transform;
+}
+.ctf-animated-bg__blob--1 {
+  width: 46vw;
+  height: 46vw;
+  top: -12vw;
+  left: -10vw;
+  background: radial-gradient(circle, rgba(74, 99, 255, 0.5) 0%, rgba(74, 99, 255, 0) 70%);
+  animation: ctf-blob-drift-1 34s ease-in-out infinite;
+}
+.ctf-animated-bg__blob--2 {
+  width: 38vw;
+  height: 38vw;
+  bottom: -14vw;
+  right: -8vw;
+  background: radial-gradient(circle, rgba(123, 92, 255, 0.45) 0%, rgba(123, 92, 255, 0) 70%);
+  animation: ctf-blob-drift-2 40s ease-in-out infinite;
+}
+.ctf-animated-bg__blob--3 {
+  width: 28vw;
+  height: 28vw;
+  top: 38vh;
+  left: 46vw;
+  background: radial-gradient(circle, rgba(90, 200, 220, 0.3) 0%, rgba(90, 200, 220, 0) 70%);
+  animation: ctf-blob-drift-3 46s ease-in-out infinite;
+}
+
+@keyframes ctf-blob-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4vw, 6vh) scale(1.08); }
+}
+@keyframes ctf-blob-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-5vw, -4vh) scale(1.1); }
+}
+@keyframes ctf-blob-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-3vw, 5vh) scale(0.94); }
+}
+
+.ctf-animated-bg__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Light theme: same motion, gentler opacity — a light background makes
+   the same blob intensity feel heavier than on dark, not because the
+   colors themselves need to change. */
+[data-theme='light'] .ctf-animated-bg__blob { opacity: 0.22; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) .ctf-animated-bg__blob { opacity: 0.22; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctf-animated-bg__blob { animation: none; }
+  .ctf-animated-bg__canvas { display: none; }
+}
+
+/* Content must always render above the background layer. Targeted
+   explicitly at header/main/footer rather than a blanket ":not()" selector
+   on every child — a catch-all here would have higher specificity than
+   .ctf-drawer-overlay's own `position: fixed` rule and silently break the
+   mobile navigation drawer's positioning. */
+.ctf-public > header,
+.ctf-public > main,
+.ctf-public > footer {
+  position: relative;
+  z-index: 1;
+}

@@ -1,0 +1,82 @@
+.ctf-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+.ctf-section-heading--center { flex-direction: column; align-items: center; text-align: center; }
+.ctf-section-heading h2 { margin-top: var(--space-2); }
+.ctf-section-heading .lead { margin-top: var(--space-3); }
+
+.ctf-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-1);
+}
+.ctf-stat__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+.ctf-stat strong {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+}
+.ctf-stat__trend { font-size: var(--text-xs); color: var(--text-tertiary); }
+.ctf-stat__trend--up { color: var(--success-9); }
+.ctf-stat__trend--down { color: var(--danger-9); }
+
+.ctf-progress {
+  width: 100%;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--surface-3);
+  overflow: hidden;
+}
+.ctf-progress__fill { height: 100%; border-radius: var(--radius-full); transition: width var(--duration-slow) var(--ease-out); }
+.ctf-progress__fill--accent { background: var(--accent-gradient); }
+.ctf-progress__fill--success { background: var(--success-9); }
+.ctf-progress__fill--warning { background: var(--warning-9); }
+
+.ctf-avatar {
+  display: inline-grid;
+  place-items: center;
+  border-radius: var(--radius-full);
+  background: var(--accent-soft);
+  color: var(--accent-7);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.ctf-tabs {
+  display: inline-flex;
+  gap: var(--space-1);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+  border: 1px solid var(--border-subtle);
+}
+.ctf-tabs__item {
+  padding: 6px var(--space-4);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-tertiary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: background var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
+}
+.ctf-tabs__item.is-active { background: var(--surface-1); color: var(--text-primary); }
+
+@media (max-width: 640px) {
+  .ctf-section-heading { flex-direction: column; align-items: flex-start; }
+}
