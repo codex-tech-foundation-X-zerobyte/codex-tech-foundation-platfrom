@@ -2,6 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 
+<<<<<<< HEAD
 test('the countRows() worker_profiles bug is actually fixed (was a real 400, not a live-database issue)', async () => {
   const workspace = await readFile(new URL('../src/lib/services/workspace.ts', import.meta.url), 'utf8')
   assert.match(workspace, /idColumn = 'id'/)
@@ -78,6 +79,8 @@ test('animated background respects prefers-reduced-motion and cleans up its anim
   assert.match(css, /pointer-events: none/)
 })
 
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 test('route coverage and access boundaries are present', async () => {
   const app = await readFile(new URL('../src/App.tsx', import.meta.url), 'utf8')
   assert.match(app, /path="\/worker\/\*"/)
@@ -107,6 +110,11 @@ test('database migration enables RLS and private storage', async () => {
   }
 })
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 test('Account Settings is real for all three roles, and Manager can now reach it (was superadmin-only before)', async () => {
   const account = await readFile(new URL('../src/lib/services/account.ts', import.meta.url), 'utf8')
   assert.match(account, /export async function updateOwnProfile/)
@@ -124,6 +132,10 @@ test('Account Settings is real for all three roles, and Manager can now reach it
   assert.doesNotMatch(app, /<SuperAdminOnly><ScaffoldPage icon=\{Wrench\}/)
 })
 
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 test('privileged submission functions exist as edge functions, not client-side writes', async () => {
   for (const fn of ['submit-lead', 'submit-contact', 'submit-job-application', 'resolve-worker-login', 'create-worker', 'create-resume-upload-url', 'create-client', 'resolve-client-login']) {
     const src = await readFile(new URL(`../supabase/functions/${fn}/index.ts`, import.meta.url), 'utf8')
@@ -166,6 +178,11 @@ test('manager role exists in the schema, types, and route guards', async () => {
   assert.match(nav, /MANAGER_NAV/)
 })
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 test('calls and notifications are actually in the Realtime publication (the real root cause of silent call alerts)', async () => {
   const migration = await readFile(new URL('../supabase/migrations/20260918000001_realtime_publication_fix.sql', import.meta.url), 'utf8')
   assert.match(migration, /alter publication supabase_realtime add table public\.calls/)
@@ -272,6 +289,10 @@ test('incoming call alerts are global, not scoped to whichever channel is open',
   assert.match(chatPage, /searchParams\.get\('join'\)/)
 })
 
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 test('Voice/Video Calls: schema reuses can_access_channel, WebRTC hook, and UI wiring all exist', async () => {
   const migration = await readFile(new URL('../supabase/migrations/20260917000000_calls.sql', import.meta.url), 'utf8')
   assert.match(migration, /create table public\.calls/)

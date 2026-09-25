@@ -15,6 +15,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [profile, setProfile] = useState<Profile | null>(null)
   const [loading, setLoading] = useState(true)
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  const refresh = async () => {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) {
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
   // Loads the profile row for a known-valid user id. A failed PROFILE
   // query and a lost SESSION are different failure modes — this function
   // never clears `profile` on its own error, so a transient query hiccup
@@ -48,11 +56,33 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // getSession() is the resilient, recommended choice here.
     const { data: { session } } = await supabase.auth.getSession()
     if (!session?.user) {
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
       setProfile(null)
       setLoading(false)
       return
     }
+<<<<<<< HEAD
     await loadProfile(session.user.id)
+=======
+<<<<<<< HEAD
+    const { data, error } = await supabase.from('profiles').select('id, display_name, role, organization, avatar_path').eq('id', user.id).single()
+    if (error) {
+      // Previously silent — a failed profile load looked identical to "not
+      // authorized" in ProtectedRoute, with nothing in the console to tell
+      // the two apart. This is exactly the class of bug that made the
+      // missing `profiles.status` column (present in the query, never in
+      // the schema) invisible until someone actually hit it.
+      console.error('Failed to load profile:', error.message)
+    }
+    setProfile((data as Profile | null))
+    setLoading(false)
+=======
+    await loadProfile(session.user.id)
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
   }
 
   const signOut = async () => {
@@ -62,6 +92,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     void refresh()
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    const { data: listener } = supabase.auth.onAuthStateChange(() => void refresh())
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
     const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
       // SIGNED_OUT is the only event that should ever clear the profile.
       // Every other event (TOKEN_REFRESHED, USER_UPDATED, an
@@ -74,6 +110,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
       void loadProfile(session.user.id)
     })
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
     return () => listener.subscription.unsubscribe()
   }, [])
 

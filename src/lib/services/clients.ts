@@ -38,6 +38,11 @@ export async function createClientAccount(input: CreateClientInput) {
   if (data?.error) return { data: null as CreateClientResult | null, error: new Error(data.error) }
   return { data: data as CreateClientResult, error: null }
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 
 export async function getMyClient() {
   const {
@@ -49,3 +54,7 @@ export async function getMyClient() {
   const { data, error } = await supabase.from('clients').select('*').eq('id', link.client_id).maybeSingle()
   return { data: data as Client | null, error: toError(error) }
 }
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a

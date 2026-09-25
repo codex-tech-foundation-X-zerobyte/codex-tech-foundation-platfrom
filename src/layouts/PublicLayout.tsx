@@ -2,7 +2,10 @@ import { useState, type ReactNode } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { ArrowRight, Menu, X } from 'lucide-react'
 import { Brand } from '../components/Brand'
+<<<<<<< HEAD
 import { AnimatedBackground } from '../components/AnimatedBackground'
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 import { Button } from '../components/ui'
 import './PublicLayout.css'
 
@@ -21,7 +24,10 @@ export function PublicLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="ctf-public">
+<<<<<<< HEAD
       <AnimatedBackground />
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
       <header className="ctf-public-nav">
         <div className="container ctf-public-nav__row">
           <Brand />

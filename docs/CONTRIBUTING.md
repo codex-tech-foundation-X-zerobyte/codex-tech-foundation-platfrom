@@ -4,7 +4,15 @@
 
 Read, in this order: `ARCHITECTURE.md` → `DATABASE-SCHEMA.md` →
 `AUTH-RULES.md` → `RBAC.md` → (`REALTIME.md` / `FILE-STORAGE.md` /
+<<<<<<< HEAD
 `NOTIFICATIONS.md` / `DEPLOYMENT.md` if relevant to your task) → `src/lib/types.ts` →
+=======
+<<<<<<< HEAD
+`NOTIFICATIONS.md` if relevant to your task) → `src/lib/types.ts` →
+=======
+`NOTIFICATIONS.md` / `DEPLOYMENT.md` if relevant to your task) → `src/lib/types.ts` →
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 `src/lib/services/`.
 
 **Do not invent**, if an existing implementation already defines it:

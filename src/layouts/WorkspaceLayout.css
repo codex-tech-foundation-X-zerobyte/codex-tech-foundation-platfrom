@@ -16,7 +16,14 @@
   top: 0;
   height: 100vh;
   overflow-y: auto;
+<<<<<<< HEAD
   transition: width var(--duration-base) var(--ease-out), padding var(--duration-base) var(--ease-out);
+=======
+<<<<<<< HEAD
+=======
+  transition: width var(--duration-base) var(--ease-out), padding var(--duration-base) var(--ease-out);
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 }
 
 .ctf-sidebar__head { display: flex; align-items: center; justify-content: space-between; padding: 0 var(--space-2); margin-bottom: var(--space-6); }
@@ -93,6 +100,14 @@
   color: var(--text-tertiary);
 }
 .ctf-topbar__icon:hover { color: var(--text-primary); }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+.ctf-workspace__content { padding: var(--space-8); flex: 1; }
+
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 .ctf-topbar__bell { position: relative; }
 .ctf-topbar__badge {
   position: absolute;
@@ -142,6 +157,10 @@
   .ctf-workspace.is-collapsed .ctf-sidebar__role { justify-content: center; }
 }
 
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 @media (max-width: 960px) {
   .ctf-sidebar {
     position: fixed;

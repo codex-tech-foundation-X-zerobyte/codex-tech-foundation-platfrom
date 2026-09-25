@@ -1,7 +1,11 @@
 import {
   Bell, Briefcase, FileText, FolderKanban, Inbox, LayoutDashboard,
   Newspaper, ShieldCheck, Users, CheckSquare, FolderOpen,
+<<<<<<< HEAD
   UserCog, ClipboardList, KeyRound, MessageSquare, Terminal,
+=======
+  UserCog, ClipboardList, KeyRound, MessageSquare,
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 } from 'lucide-react'
 import type { NavGroup } from './WorkspaceLayout'
 
@@ -30,7 +34,10 @@ export const WORKER_NAV: NavGroup[] = [
     items: [
       { label: 'Files', path: '/worker/resources', icon: FolderOpen },
       { label: 'Chat', path: '/worker/chat', icon: MessageSquare },
+<<<<<<< HEAD
       { label: 'Dev Tools', path: '/worker/devtools', icon: Terminal },
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
     ],
   },
   {
@@ -62,7 +69,10 @@ export const ADMIN_NAV: NavGroup[] = [
       { label: 'Careers', path: '/admin/content/careers', icon: ClipboardList },
       { label: 'Resources', path: '/admin/resources', icon: FolderOpen },
       { label: 'Chat', path: '/admin/chat', icon: MessageSquare },
+<<<<<<< HEAD
       { label: 'Dev Tools', path: '/admin/devtools', icon: Terminal },
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
     ],
   },
   {
@@ -102,7 +112,10 @@ export const MANAGER_NAV: NavGroup[] = [
       { label: 'Careers', path: '/admin/content/careers', icon: ClipboardList },
       { label: 'Resources', path: '/admin/resources', icon: FolderOpen },
       { label: 'Chat', path: '/admin/chat', icon: MessageSquare },
+<<<<<<< HEAD
       { label: 'Dev Tools', path: '/admin/devtools', icon: Terminal },
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
     ],
   },
   {

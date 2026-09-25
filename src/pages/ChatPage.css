@@ -4,9 +4,19 @@
   gap: var(--space-4);
   height: calc(100vh - 200px);
   min-height: 480px;
+<<<<<<< HEAD
   transition: grid-template-columns var(--duration-base) var(--ease-out);
 }
 .ctf-chat.ctf-chat--sidebar-collapsed { grid-template-columns: 52px 1fr; }
+=======
+<<<<<<< HEAD
+}
+=======
+  transition: grid-template-columns var(--duration-base) var(--ease-out);
+}
+.ctf-chat.ctf-chat--sidebar-collapsed { grid-template-columns: 52px 1fr; }
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 @media (max-width: 768px) {
   .ctf-chat { grid-template-columns: 1fr; height: auto; }
 }
@@ -19,7 +29,14 @@
   background: var(--surface-1);
   overflow: hidden;
 }
+<<<<<<< HEAD
 .ctf-chat__sidebar.is-collapsed .ctf-chat__sidebar-head { justify-content: center; padding: var(--space-3) 0; }
+=======
+<<<<<<< HEAD
+=======
+.ctf-chat__sidebar.is-collapsed .ctf-chat__sidebar-head { justify-content: center; padding: var(--space-3) 0; }
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 .ctf-chat__sidebar-head {
   display: flex;
   align-items: center;
@@ -99,6 +116,19 @@
 }
 .ctf-chat__messages { flex: 1; overflow-y: auto; padding: var(--space-4) var(--space-5); display: flex; flex-direction: column; gap: var(--space-4); }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+.ctf-chat__message { display: flex; gap: var(--space-3); }
+.ctf-chat__message-body { flex: 1; min-width: 0; }
+.ctf-chat__message-meta { display: flex; align-items: baseline; gap: var(--space-2); }
+.ctf-chat__message-meta strong { font-size: var(--text-sm); }
+.ctf-chat__message-meta span { font-size: 11px; color: var(--text-faint); }
+.ctf-chat__message-body p { margin: 2px 0 0; font-size: var(--text-sm); white-space: pre-wrap; word-break: break-word; }
+.ctf-chat__deleted { color: var(--text-faint); font-size: var(--text-sm); }
+.ctf-chat__message-actions { display: flex; gap: 4px; align-self: flex-start; opacity: 0; transition: opacity 0.1s; }
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 .ctf-chat__message { display: flex; gap: var(--space-2); max-width: 100%; }
 .ctf-chat__message.is-mine { flex-direction: row-reverse; }
 
@@ -147,6 +177,10 @@
 }
 .ctf-chat__deleted { color: var(--text-faint); font-size: var(--text-sm); }
 .ctf-chat__message-actions { display: flex; gap: 4px; margin-top: 2px; opacity: 0; transition: opacity 0.1s; }
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 .ctf-chat__message:hover .ctf-chat__message-actions { opacity: 1; }
 .ctf-chat__message-actions button { background: none; border: none; color: var(--text-tertiary); cursor: pointer; padding: 4px; }
 .ctf-chat__message-actions button:hover { color: var(--text-primary); }
@@ -154,9 +188,21 @@
 
 .ctf-chat__attachment {
   display: inline-flex; align-items: center; gap: 6px;
+<<<<<<< HEAD
   margin-top: 2px; padding: 6px 10px;
   border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
   background: var(--surface-1); color: var(--text-secondary);
+=======
+<<<<<<< HEAD
+  margin-top: 6px; padding: 6px 10px;
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  background: var(--surface-2); color: var(--text-secondary);
+=======
+  margin-top: 2px; padding: 6px 10px;
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  background: var(--surface-1); color: var(--text-secondary);
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
   font-size: var(--text-xs); cursor: pointer;
 }
 

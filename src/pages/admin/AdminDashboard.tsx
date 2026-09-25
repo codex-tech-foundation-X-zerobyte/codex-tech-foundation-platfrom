@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+<<<<<<< HEAD
 import { Briefcase, FileText, FolderKanban, Inbox, RefreshCw, ShieldCheck, Users } from 'lucide-react'
 import { Button, SectionHeading, Stat } from '../../components/ui'
 import { checkDatabaseHealth, checkEdgeFunctionHealth, countRows } from '../../lib/services'
@@ -12,10 +13,25 @@ const METRICS = [
   { key: 'leads', table: 'leads', label: 'Open leads', icon: Inbox, filters: { status: 'new' }, idColumn: 'id' },
   { key: 'applications', table: 'applications', label: 'Applications', icon: FileText, filters: undefined, idColumn: 'id' },
   { key: 'published', table: 'blog_posts', label: 'Published posts', icon: ShieldCheck, filters: undefined, idColumn: 'id' },
+=======
+import { Briefcase, FileText, FolderKanban, Inbox, ShieldCheck, Users } from 'lucide-react'
+import { SectionHeading, Stat } from '../../components/ui'
+import { countRows } from '../../lib/services'
+import './AdminDashboard.css'
+
+const METRICS = [
+  { key: 'workers', table: 'worker_profiles', label: 'Active workers', icon: Users, filters: { status: 'active' } },
+  { key: 'clients', table: 'clients', label: 'Active clients', icon: Briefcase, filters: undefined },
+  { key: 'projects', table: 'projects', label: 'Projects', icon: FolderKanban, filters: undefined },
+  { key: 'leads', table: 'leads', label: 'Open leads', icon: Inbox, filters: { status: 'new' } },
+  { key: 'applications', table: 'applications', label: 'Applications', icon: FileText, filters: undefined },
+  { key: 'published', table: 'blog_posts', label: 'Published posts', icon: ShieldCheck, filters: undefined },
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 ] as const
 
 export function AdminDashboard() {
   const [counts, setCounts] = useState<Record<string, number | null>>({})
+<<<<<<< HEAD
   const [dbHealth, setDbHealth] = useState<HealthCheckResult>({ status: 'checking', latencyMs: null })
   const [fnHealth, setFnHealth] = useState<HealthCheckResult>({ status: 'checking', latencyMs: null })
   const [lastChecked, setLastChecked] = useState<Date | null>(null)
@@ -24,11 +40,18 @@ export function AdminDashboard() {
   useEffect(() => {
     METRICS.forEach((m) => {
       void countRows(m.table, m.filters as Record<string, string> | undefined, m.idColumn).then(({ count, error }) => {
+=======
+
+  useEffect(() => {
+    METRICS.forEach((m) => {
+      void countRows(m.table, m.filters as Record<string, string> | undefined).then(({ count, error }) => {
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
         setCounts((prev) => ({ ...prev, [m.key]: error ? null : count }))
       })
     })
   }, [])
 
+<<<<<<< HEAD
   const runHealthChecks = () => {
     setChecking(true)
     setDbHealth({ status: 'checking', latencyMs: null })
@@ -42,6 +65,8 @@ export function AdminDashboard() {
   }
   useEffect(runHealthChecks, [])
 
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
   return (
     <div>
       <SectionHeading eyebrow="Admin" title="System overview." />
@@ -53,6 +78,7 @@ export function AdminDashboard() {
 
       <div className="ctf-admin-columns">
         <section>
+<<<<<<< HEAD
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <h2>System health</h2>
             <Button variant="ghost" size="sm" icon={<RefreshCw size={13} />} onClick={runHealthChecks} loading={checking}>Recheck</Button>
@@ -70,6 +96,14 @@ export function AdminDashboard() {
             <HealthRow label="Edge functions" result={fnHealth} />
           </ul>
           {lastChecked && <p className="ctf-muted" style={{ fontSize: 12, marginTop: 8 }}>Last checked {lastChecked.toLocaleTimeString()}</p>}
+=======
+          <h2>System health</h2>
+          <ul className="ctf-health-list">
+            <li><span className="ctf-health-dot ctf-health-dot--ok" /> Supabase connection: healthy</li>
+            <li><span className="ctf-health-dot ctf-health-dot--ok" /> Row-level security: enforced</li>
+            <li><span className="ctf-health-dot ctf-health-dot--ok" /> Edge functions: reachable</li>
+          </ul>
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
         </section>
         <section>
           <h2>Pending actions</h2>
@@ -79,6 +113,7 @@ export function AdminDashboard() {
     </div>
   )
 }
+<<<<<<< HEAD
 
 function HealthRow({ label, result }: { label: string; result: HealthCheckResult }) {
   const tone = result.status === 'checking' ? 'checking' : result.status === 'healthy' ? 'ok' : result.status === 'degraded' ? 'warn' : 'down'
@@ -94,3 +129,5 @@ function HealthRow({ label, result }: { label: string; result: HealthCheckResult
     </li>
   )
 }
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a

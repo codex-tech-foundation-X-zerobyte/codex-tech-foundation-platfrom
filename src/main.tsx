@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+<<<<<<< HEAD
 import { initTheme } from './lib/theme'
 import { hasValidConfig } from './lib/supabase'
 
@@ -36,6 +37,14 @@ if (!hasValidConfig) {
     </StrictMode>,
   )
 }
+=======
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => void navigator.serviceWorker.register('/sw.js'))

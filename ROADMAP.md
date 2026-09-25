@@ -372,6 +372,11 @@ read/unread, @mentions, reactions, message search (carried over from Pass
 5), plus an SFU for calls beyond a handful of concurrent participants and
 a TURN server for NAT traversal. See "Explicitly NOT done" below.
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 ## Pass 7 — this round: live bug reports, not a spec
 
 Scope: four specific, user-reported bugs on a real deployment, not a
@@ -516,6 +521,7 @@ publication-fixed `notifications` table (`subscribeToMyNotifications()` in
 `NotificationsPage` — which also **had no route for Client at all** until
 this pass (`/client/notifications` didn't exist; only worker and admin did).
 
+<<<<<<< HEAD
 ## Pass 9 — this round: Developer Tools, Light Mode, animated background, and a live-error diagnostic pass
 
 **Developer Tools — real, not padded with fake utilities.** Hash generator
@@ -620,6 +626,9 @@ This can't be confirmed without direct access to the live Supabase project
 and deployed environment variables, which this pass never had. See the
 verification checklist in the chat reply for exactly what to check.
 
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 ## Explicitly NOT done — don't assume otherwise
 
 - **Rich-text editing**: still a plain-text/lightweight-markdown editor
@@ -644,6 +653,19 @@ verification checklist in the chat reply for exactly what to check.
   The client portal's own file/update views are still placeholders —
   extending client-facing file access (`project_files`, deliverables) to
   the same real pattern is a natural next step but wasn't done here.
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+- **Developer Tools page** (QR/hash/base64/URL encode-decode utilities) —
+  requested, not built this pass.
+- **Light/Dark/System theme and the visitor-area animated background** —
+  requested, not built this pass. This is a genuinely large, cross-cutting
+  change (every surface's CSS needs a real light-mode palette, not an
+  inverted dark one) and doing it well alongside everything else in this
+  pass would have meant doing it rushed — deliberately deferred rather
+  than shipped half-considered.
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 - **Still-scaffolded routes** (confirmed by reading `App.tsx` directly, not
   guessed): Security overview, Worker profile detail, cross-project Task
   view, project workspace detail tabs (`/worker/projects/:id`,
@@ -651,6 +673,10 @@ verification checklist in the chat reply for exactly what to check.
   detail view), client-side files/updates/maintenance, organisation-wide
   platform configuration (`system_settings` has no UI), and lead-to-client/
   project conversion.
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 - **Team Chat**: implemented (Pass 5) but still missing presence, typing
   indicators, read/unread state, @mentions, reactions, and message search —
   deliberately deferred to ship a working core first.

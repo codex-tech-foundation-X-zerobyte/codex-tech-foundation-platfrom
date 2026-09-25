@@ -122,6 +122,7 @@
     --duration-slow: 0ms;
   }
 }
+<<<<<<< HEAD
 
 /*
   Light theme — a deliberately designed palette, not an inverted dark one.
@@ -219,3 +220,5 @@
     --shadow-accent: 0 12px 32px rgba(58, 91, 255, 0.14);
   }
 }
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a

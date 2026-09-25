@@ -1,7 +1,14 @@
 import { supabase } from '../supabase'
 import type { Project, ProjectMilestone, ProjectUpdate } from '../types'
 import { toError } from './shared'
+<<<<<<< HEAD
 import { ensureProjectChannel } from './chat'
+=======
+<<<<<<< HEAD
+=======
+import { ensureProjectChannel } from './chat'
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 
 export async function listPublishedProjects() {
   const { data, error } = await supabase
@@ -57,6 +64,11 @@ export async function archiveProject(id: string) {
   const { error } = await supabase.from('projects').update({ archived_at: new Date().toISOString() }).eq('id', id)
   return { error: toError(error) }
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 
 export interface CreateProjectInput {
   name: string
@@ -118,3 +130,7 @@ export async function removeProjectMember(projectId: string, userId: string) {
   const { error } = await supabase.from('project_members').delete().eq('project_id', projectId).eq('user_id', userId)
   return { error: toError(error) }
 }
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a

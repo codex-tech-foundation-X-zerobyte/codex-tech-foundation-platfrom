@@ -1,6 +1,14 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 // GitHub Pages serves a project site from a subpath (/<repo-name>/), so
 // every asset URL needs that prefix — Vercel serves from the domain root
 // and needs none. The GitHub Actions Pages workflow (.github/workflows/
@@ -11,4 +19,8 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
   base: process.env.VITE_BASE_PATH || '/',
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 })

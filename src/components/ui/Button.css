@@ -58,7 +58,11 @@
 .ctf-btn--danger {
   background: var(--danger-soft);
   border-color: var(--border-danger);
+<<<<<<< HEAD
   color: var(--danger-9);
+=======
+  color: #f3b9b6;
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 }
 .ctf-btn--danger:hover:not(:disabled) { background: rgba(213, 100, 95, 0.22); }
 

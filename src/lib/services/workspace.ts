@@ -7,11 +7,20 @@ export async function listNotifications() {
   return { data: (data ?? []) as Notification[], error: toError(error) }
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 export async function getUnreadNotificationCount() {
   const { count, error } = await supabase.from('notifications').select('id', { count: 'exact', head: true }).is('read_at', null)
   return { count: count ?? 0, error: toError(error) }
 }
 
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 export async function markNotificationRead(id: string) {
   const { error } = await supabase.from('notifications').update({ read_at: new Date().toISOString() }).eq('id', id)
   return { error: toError(error) }
@@ -45,12 +54,18 @@ export async function createProjectRequest(input: { project_id: string; title: s
 // (Team Files, Pass 4) — this file no longer defines listResources() to
 // avoid two competing implementations of the same query.
 
+<<<<<<< HEAD
 /** Simple counts used by dashboards. Each is a real, permission-scoped Supabase query — never mocked.
  *  idColumn defaults to 'id', which is every table's PK except worker_profiles (PK is user_id, since
  *  it's a 1:1 extension of profiles) — this generic default previously broke that one table's count
  *  with a real PostgREST 400 ("column worker_profiles.id does not exist"), not a live-database issue. */
 export async function countRows(table: string, filters?: Record<string, string | boolean | null>, idColumn = 'id') {
   let query = supabase.from(table).select(idColumn, { count: 'exact', head: true })
+=======
+/** Simple counts used by dashboards. Each is a real, permission-scoped Supabase query — never mocked. */
+export async function countRows(table: string, filters?: Record<string, string | boolean | null>) {
+  let query = supabase.from(table).select('id', { count: 'exact', head: true })
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
   if (filters) {
     for (const [key, value] of Object.entries(filters)) {
       query = value === null ? query.is(key, null) : query.eq(key, value as string | boolean)

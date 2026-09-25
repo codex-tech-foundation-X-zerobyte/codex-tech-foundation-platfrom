@@ -13,6 +13,7 @@
 .ctf-health-list li { display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); color: var(--text-secondary); }
 .ctf-health-dot { width: 8px; height: 8px; border-radius: 50%; }
 .ctf-health-dot--ok { background: var(--success-9); }
+<<<<<<< HEAD
 .ctf-health-dot--warn { background: var(--warning-9); }
 .ctf-health-dot--down { background: var(--danger-9); }
 .ctf-health-dot--checking { background: var(--text-faint); animation: ctf-pulse 1.2s ease-in-out infinite; }
@@ -20,6 +21,8 @@
 @media (prefers-reduced-motion: reduce) {
   .ctf-health-dot--checking { animation: none; opacity: 0.7; }
 }
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 
 @media (max-width: 1200px) {
   .ctf-admin-grid { grid-template-columns: repeat(3, 1fr); }

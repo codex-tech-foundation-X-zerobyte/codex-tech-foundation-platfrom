@@ -50,6 +50,11 @@ export function subscribeToChannelCalls(channelId: string, onChange: () => void)
   return channel
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 // Live unread-notification feed for the current user — RLS on
 // `notifications` already scopes rows to `user_id = auth.uid()`, so no
 // filter is needed here (same principle as the global incoming-call
@@ -62,6 +67,10 @@ export function subscribeToMyNotifications(onChange: () => void): RealtimeChanne
   return channel
 }
 
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 // ── Call signaling ─────────────────────────────────────────────────────
 // Uses Realtime Broadcast, not postgres_changes: SDP offers/answers and ICE
 // candidates are ephemeral exchange messages, not data worth persisting to

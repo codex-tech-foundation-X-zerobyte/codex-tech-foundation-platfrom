@@ -20,6 +20,11 @@ export async function listWorkers() {
   return { data: rows as WorkerRow[], error: null }
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 export async function getMyWorkerProfile() {
   const {
     data: { user },
@@ -28,6 +33,10 @@ export async function getMyWorkerProfile() {
   const { data, error } = await supabase.from('worker_profiles').select('*').eq('user_id', user.id).maybeSingle()
   return { data: data as WorkerProfile | null, error: toError(error) }
 }
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 export async function updateWorkerStatus(userId: string, status: WorkerProfile['status']) {
   const { error } = await supabase.from('worker_profiles').update({ status }).eq('user_id', userId)
   return { error: toError(error) }

@@ -1,6 +1,13 @@
 import { supabase } from '../supabase'
 import type { Lead, StartProjectRequest } from '../types'
+<<<<<<< HEAD
 import { toError } from './shared'
+=======
+<<<<<<< HEAD
+=======
+import { toError } from './shared'
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 
 export async function submitLead(lead: Lead) {
   const { error } = await supabase.functions.invoke('submit-lead', { body: lead })
@@ -16,6 +23,11 @@ export async function submitContactMessage(payload: { name: string; email: strin
   const { error } = await supabase.functions.invoke('submit-contact', { body: payload })
   return { error: error ? new Error('Unable to send your message right now. Please try again.') : null }
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 
 // Admin/worker lead management — gated by the leads.view/leads.manage RLS
 // policies from Pass 3 (already correct; no policy changes needed here).
@@ -38,3 +50,7 @@ export async function assignLead(id: string, userId: string | null) {
   const { error } = await supabase.from('leads').update({ assigned_to: userId }).eq('id', id)
   return { error: toError(error) }
 }
+<<<<<<< HEAD
+=======
+>>>>>>> ac4f45b (Codex Tech Foundation platform — through Pass 8)
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a

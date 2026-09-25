@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from 'react'
+<<<<<<< HEAD
 import { KeyRound, Monitor, Moon, Sun, User } from 'lucide-react'
 import { Badge, Button, FieldWrap, Input, SectionHeading, SkeletonRows, useToast } from '../components/ui'
 import { changePassword, getMyClient, getMyWorkerProfile, getOwnEmail, updateOwnProfile } from '../lib/services'
@@ -6,6 +7,13 @@ import { useAuth } from '../lib/auth'
 import { applyTheme, getStoredTheme, type ThemeChoice } from '../lib/theme'
 import type { Client, WorkerProfile } from '../lib/types'
 import './AccountSettings.css'
+=======
+import { KeyRound, User } from 'lucide-react'
+import { Badge, Button, FieldWrap, Input, SectionHeading, SkeletonRows, useToast } from '../components/ui'
+import { changePassword, getMyClient, getMyWorkerProfile, getOwnEmail, updateOwnProfile } from '../lib/services'
+import { useAuth } from '../lib/auth'
+import type { Client, WorkerProfile } from '../lib/types'
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 
 export function AccountSettings() {
   const { profile, refresh } = useAuth()
@@ -23,7 +31,10 @@ export function AccountSettings() {
   const [workerInfo, setWorkerInfo] = useState<WorkerProfile | null>(null)
   const [clientInfo, setClientInfo] = useState<Client | null>(null)
   const [roleInfoLoaded, setRoleInfoLoaded] = useState(false)
+<<<<<<< HEAD
   const [theme, setTheme] = useState<ThemeChoice>(getStoredTheme())
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 
   useEffect(() => {
     void getOwnEmail().then(setEmail)
@@ -79,6 +90,7 @@ export function AccountSettings() {
       </section>
 
       <section>
+<<<<<<< HEAD
         <SectionHeading eyebrow="Appearance" title="Theme" />
         <div className="ctf-theme-picker">
           {([
@@ -100,6 +112,8 @@ export function AccountSettings() {
       </section>
 
       <section>
+=======
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
         <SectionHeading eyebrow="Security" title="Change password" />
         <form onSubmit={savePassword} style={{ display: 'grid', gap: 12 }}>
           <FieldWrap label="Current password" htmlFor="acct-current-pw" hint="Not verified separately — you're already signed in">

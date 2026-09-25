@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 
+<<<<<<< HEAD
 const rawUrl = import.meta.env.VITE_SUPABASE_URL
 const rawAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
@@ -22,6 +23,11 @@ if (!hasValidConfig) {
     'See .env.example and docs/DEPLOYMENT.md.',
   )
 }
+=======
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL ?? 'https://example.supabase.co'
+const supabaseAnonKey =
+  import.meta.env.VITE_SUPABASE_ANON_KEY ?? 'demo-anon-key-for-local-development'
+>>>>>>> 061b8d9550595bf4603704f9a719614dc376af1a
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
