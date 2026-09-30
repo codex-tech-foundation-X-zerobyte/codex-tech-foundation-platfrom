@@ -1,0 +1,27 @@
+.ctf-worker-profile { max-width: 560px; }
+.ctf-worker-profile__head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-8); }
+.ctf-worker-profile__head h1 { font-size: var(--text-2xl); }
+.ctf-worker-profile__head span { display: block; margin-top: var(--space-2); font-size: var(--text-sm); color: var(--text-tertiary); }
+
+.ctf-worker-profile__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
+.ctf-worker-profile__field {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-1);
+}
+.ctf-worker-profile__field span { display: block; font-size: var(--text-xs); color: var(--text-faint); margin-bottom: var(--space-1); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
+
+.ctf-worker-profile__bio {
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-1);
+  margin-bottom: var(--space-8);
+}
+.ctf-worker-profile__bio span { font-size: var(--text-xs); color: var(--text-faint); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
+.ctf-worker-profile__bio p { margin-top: var(--space-3); font-size: var(--text-sm); color: var(--text-secondary); }
+
+@media (max-width: 640px) {
+  .ctf-worker-profile__grid { grid-template-columns: 1fr; }
+}

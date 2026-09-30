@@ -1,0 +1,8 @@
+.ctf-content-page {
+  padding: var(--space-20) 0 var(--space-24);
+  max-width: var(--content-width-narrow);
+}
+.ctf-content-page h1 { margin-top: var(--space-4); font-size: var(--text-3xl); }
+.ctf-content-page .lead { margin-top: var(--space-5); }
+.ctf-content-page section { margin-top: var(--space-12); }
+.ctf-content-page section h2 { margin-bottom: var(--space-4); }

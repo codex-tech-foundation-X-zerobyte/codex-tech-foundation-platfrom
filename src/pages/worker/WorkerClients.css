@@ -1,0 +1,15 @@
+.ctf-clients__toolbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-4); flex-wrap: wrap; }
+.ctf-clients__name { display: flex; flex-direction: column; }
+.ctf-clients__name strong { font-size: var(--text-sm); }
+.ctf-clients__name span { font-size: var(--text-xs); color: var(--text-tertiary); }
+.ctf-clients__detail { display: flex; flex-direction: column; gap: var(--space-3); }
+.ctf-clients__detail > div { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); font-size: var(--text-sm); padding-bottom: var(--space-3); border-bottom: 1px solid var(--border-subtle); }
+.ctf-clients__detail span { color: var(--text-tertiary); }
+.ctf-clients__detail a { display: inline-flex; align-items: center; gap: 6px; color: var(--accent-7); }
+.ctf-clients__detail em { color: var(--text-faint); font-style: normal; }
+.ctf-clients__sub { font-size: var(--text-sm); color: var(--text-secondary); }
+.ctf-clients__projects { display: flex; flex-direction: column; gap: var(--space-2); }
+.ctf-clients__projects a { display: flex; align-items: center; gap: var(--space-3); padding: 10px var(--space-3); border-radius: var(--radius-md); border: 1px solid var(--border-subtle); font-size: var(--text-sm); transition: border-color var(--duration-base), background var(--duration-base); }
+.ctf-clients__projects a:hover { border-color: var(--border-accent); background: var(--surface-2); }
+.ctf-clients__projects a span:first-child { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ctf-clients__projects a svg { color: var(--text-faint); }

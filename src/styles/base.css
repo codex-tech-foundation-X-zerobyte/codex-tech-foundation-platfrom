@@ -1,0 +1,186 @@
+@import './tokens.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg-0);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a, button, select, input, textarea {
+  font: inherit;
+}
+
+/*
+  Button reset. Browsers give a bare <button> a grey face, an outset border and their own
+  text colour. Several components (sidebar links, topbar icons, chat channels, close buttons,
+  tabs) render raw buttons and only override SOME of that, which produced the grey "cover"
+  and stray borders. Reset once here; component classes opt in to the look they want.
+*/
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+button:disabled, [aria-disabled='true'] { cursor: not-allowed; }
+select { cursor: pointer; }
+input, select, textarea { color: inherit; }
+a { -webkit-tap-highlight-color: transparent; }
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+input[type='number'] { -moz-appearance: textfield; appearance: textfield; }
+
+/* Quiet dark scrollbars — the default light ones are the loudest thing in a dark UI */
+* { scrollbar-width: thin; scrollbar-color: rgba(148, 163, 184, 0.28) transparent; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.22); border-radius: 999px; border: 2px solid transparent; background-clip: content-box; }
+*::-webkit-scrollbar-thumb:hover { background: rgba(148, 163, 184, 0.4); background-clip: content-box; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+
+strong {
+  font-weight: 600;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Headings share a tight, deliberate scale — not "every heading enormous" */
+h1 { font-size: var(--text-2xl); font-weight: 700; letter-spacing: var(--tracking-tight); line-height: var(--leading-tight); }
+h2 { font-size: var(--text-xl); font-weight: 700; letter-spacing: var(--tracking-tight); line-height: var(--leading-tight); }
+h3 { font-size: var(--text-lg); font-weight: 600; line-height: var(--leading-snug); }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--accent-7);
+}
+
+.eyebrow.muted {
+  color: var(--text-tertiary);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 14px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.lead {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+  max-width: 62ch;
+}
+
+.text-link {
+  color: var(--text-tertiary);
+  font-size: var(--text-sm);
+  transition: color var(--duration-base) var(--ease-out);
+}
+.text-link:hover { color: var(--text-primary); }
+
+::selection {
+  background: var(--accent-soft-strong);
+  color: var(--text-primary);
+}
+
+/* Focus visibility — accessibility, not decoration */
+:focus-visible {
+  outline: 2px solid var(--accent-7);
+  outline-offset: 2px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+.mono { font-family: var(--font-mono); font-feature-settings: 'zero' 1; }
+
+.kbd {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 20px; height: 20px; padding: 0 6px;
+  border-radius: 5px; border: 1px solid var(--border-default); border-bottom-width: 2px;
+  background: var(--surface-2); color: var(--text-tertiary);
+  font-family: var(--font-mono); font-size: 11px; line-height: 1;
+}
+
+.ctf-muted { color: var(--text-tertiary); font-size: var(--text-sm); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.container {
+  width: min(var(--content-width), 100%);
+  margin: 0 auto;
+  padding-inline: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .container { padding-inline: var(--space-4); }
+  :root { --text-4xl: 2.5rem; --text-3xl: 2.1rem; --text-2xl: 1.75rem; }
+}
