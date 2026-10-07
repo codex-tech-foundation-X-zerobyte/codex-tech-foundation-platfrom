@@ -1,0 +1,59 @@
+.ctf-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ctf-field label {
+  font-size: var(--text-sm);
+  font-weight: 550;
+  color: var(--text-secondary);
+}
+
+.ctf-field__required { color: var(--danger-9); }
+
+.ctf-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  background: var(--surface-1);
+  color: var(--text-primary);
+  transition: border-color var(--duration-base) var(--ease-out), background var(--duration-base) var(--ease-out);
+}
+.ctf-input::placeholder { color: var(--text-faint); }
+.ctf-input:hover { border-color: var(--border-strong); }
+.ctf-input:focus { outline: none; border-color: var(--accent-8); background: var(--surface-2); box-shadow: 0 0 0 3px var(--accent-soft); }
+.ctf-input:disabled { opacity: 0.55; cursor: not-allowed; }
+.ctf-input.is-error { border-color: var(--border-danger); }
+
+.ctf-textarea {
+  height: auto;
+  min-height: 120px;
+  padding: var(--space-3) var(--space-4);
+  resize: vertical;
+  line-height: var(--leading-normal);
+}
+
+.ctf-select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-tertiary) 50%), linear-gradient(135deg, var(--text-tertiary) 50%, transparent 50%);
+  background-position: calc(100% - 20px) center, calc(100% - 15px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.ctf-field__hint { color: var(--text-tertiary); font-size: var(--text-xs); }
+.ctf-field__error { color: var(--danger-9); font-size: var(--text-xs); }
+
+/* Shared form utilities (previously buried in page-level CSS, which breaks under route code-splitting) */
+.ctf-form-error {
+  color: #f3b9b6; background: var(--danger-soft); border: 1px solid var(--border-danger);
+  border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); font-size: var(--text-sm);
+}
+.ctf-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+@media (max-width: 560px) { .ctf-form-row { grid-template-columns: 1fr; } }
+
+.ctf-form { display: flex; flex-direction: column; gap: var(--space-4); }
+.ctf-form__actions { display: flex; justify-content: flex-end; gap: var(--space-3); margin-top: var(--space-2); }

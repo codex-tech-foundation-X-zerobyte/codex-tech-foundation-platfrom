@@ -1,0 +1,4 @@
+.ctf-client-others { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--space-3); }
+.ctf-client-other { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--border-subtle); transition: border-color var(--duration-base), background var(--duration-base); }
+.ctf-client-other:hover { border-color: var(--border-accent); background: var(--surface-2); }
+.ctf-client-other strong { font-size: var(--text-sm); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

@@ -1,0 +1,25 @@
+.ctf-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ctf-brand__copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.ctf-brand__copy strong {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+
+.ctf-brand__copy small {
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}

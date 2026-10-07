@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This covers the site's static routes only. Projects, case studies, blog posts,
+  and careers are dynamic (Supabase-backed) and can't be enumerated from a static
+  file — generating their sitemap entries needs a small build-time or edge-function
+  script that queries each published table and appends <url> entries here. Not
+  implemented yet; listed in ROADMAP.md.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/what-we-build</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/projects</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/case-studies</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/about</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/team</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/blog</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/careers</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/contact</loc><changefreq>yearly</changefreq></url>
+  <url><loc>https://REPLACE-WITH-YOUR-DOMAIN/start-project</loc><changefreq>yearly</changefreq></url>
+</urlset>
