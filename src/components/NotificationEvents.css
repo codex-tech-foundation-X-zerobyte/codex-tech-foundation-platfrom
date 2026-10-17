@@ -1,0 +1,24 @@
+.ctf-nevents { display: grid; margin-top: var(--space-4); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; }
+.ctf-nevents__head, .ctf-nevents__row { display: grid; grid-template-columns: minmax(0, 1fr) 72px 72px; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); }
+.ctf-nevents__head { background: var(--surface-2); font-size: var(--text-xs); color: var(--text-tertiary); }
+.ctf-nevents__head span:not(:first-child), .ctf-nevents__toggle, .ctf-nevents__na { justify-self: center; }
+.ctf-nevents__row { border-top: 1px solid var(--border-subtle); }
+.ctf-nevents__what { display: grid; gap: 2px; min-width: 0; }
+.ctf-nevents__what strong { font-size: var(--text-sm); }
+.ctf-nevents__what span { font-size: var(--text-xs); color: var(--text-tertiary); }
+.ctf-nevents__toggle { display: inline-flex; align-items: center; cursor: pointer; }
+.ctf-nevents__toggle input { width: 20px; height: 20px; cursor: pointer; accent-color: var(--accent-9); }
+.ctf-nevents__label { display: none; }
+.ctf-nevents__na { color: var(--text-faint); }
+.ctf-nevents__note { margin: 0; padding: var(--space-3) var(--space-4); border-top: 1px solid var(--border-subtle); font-size: var(--text-xs); color: var(--text-tertiary); }
+
+/* Phones: the column headings scroll away from the rows, so each tick names itself instead. */
+@media (max-width: 640px) {
+  .ctf-nevents__head { display: none; }
+  .ctf-nevents__row { grid-template-columns: minmax(0, 1fr) auto auto; }
+  .ctf-nevents__what { grid-column: 1 / -1; }
+  .ctf-nevents__toggle { justify-self: start; gap: var(--space-2); }
+  .ctf-nevents__label { display: inline; font-size: var(--text-sm); }
+  .ctf-nevents__na { display: none; }
+  .ctf-nevents__row { grid-template-columns: auto auto 1fr; }
+}

@@ -1,0 +1,64 @@
+/* Round call buttons — explicit border/background so the browser's default button face never shows through */
+.ctf-call-round {
+  display: inline-grid; place-items: center; width: 46px; height: 46px; flex-shrink: 0;
+  border-radius: 50%; border: 1px solid var(--border-default); background: var(--surface-3); color: var(--text-primary);
+  transition: background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+.ctf-call-round:hover { background: #1e2735; border-color: var(--border-strong); }
+.ctf-call-round:active { transform: scale(0.94); }
+.ctf-call-round.is-on { background: #f5f7fa; color: #06080d; border-color: #f5f7fa; }
+.ctf-call-round--decline { background: #d5423f; border-color: #e35b58; color: #fff; }
+.ctf-call-round--decline:hover { background: #e04f4c; border-color: #ee706d; }
+.ctf-call-round--accept { background: var(--signal-9); border-color: #5fe2b8; color: #04150f; }
+.ctf-call-round--accept:hover { background: #4be0b0; border-color: #86ecc9; }
+.ctf-call-round:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* Incoming */
+.ctf-call-incoming {
+  position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: var(--z-call);
+  display: flex; align-items: center; gap: var(--space-4); width: min(420px, calc(100vw - 24px));
+  padding: var(--space-3) var(--space-4); border-radius: 18px;
+  background: rgba(16, 22, 32, 0.94); backdrop-filter: blur(16px);
+  border: 1px solid var(--border-strong); box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0, 0, 0, 0.4);
+  animation: ctf-call-drop var(--duration-slow) var(--ease-out);
+}
+@keyframes ctf-call-drop { from { opacity: 0; transform: translate(-50%, -16px); } to { opacity: 1; transform: translate(-50%, 0); } }
+.ctf-call-incoming__avatar { position: relative; display: grid; place-items: center; flex-shrink: 0; }
+.ctf-call-incoming__ring { position: absolute; inset: -4px; border-radius: 50%; border: 2px solid var(--signal-9); animation: ctf-call-ring 1.6s ease-out infinite; }
+@keyframes ctf-call-ring { 0% { transform: scale(0.9); opacity: 0.9; } 100% { transform: scale(1.5); opacity: 0; } }
+.ctf-call-incoming__info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.ctf-call-incoming__info strong { font-size: var(--text-base); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ctf-call-incoming__info span { font-size: var(--text-sm); color: var(--text-tertiary); }
+.ctf-call-incoming__actions { display: flex; gap: var(--space-3); }
+
+/* Active */
+.ctf-call-window {
+  position: fixed; right: 20px; bottom: 20px; z-index: var(--z-call);
+  width: 320px; display: flex; flex-direction: column; overflow: hidden;
+  border-radius: 20px; background: rgba(12, 17, 25, 0.96); backdrop-filter: blur(16px);
+  border: 1px solid var(--border-strong); box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0, 0, 0, 0.4);
+  animation: ctf-pop-in var(--duration-slow) var(--ease-out);
+}
+.ctf-call-window.is-video { width: min(440px, calc(100vw - 40px)); }
+.ctf-call-window__head { padding: var(--space-4) var(--space-5) var(--space-2); }
+.ctf-call-window__who { display: flex; flex-direction: column; }
+.ctf-call-window__who strong { font-size: var(--text-base); }
+.ctf-call-window__status { font-size: var(--text-sm); color: var(--text-tertiary); }
+.ctf-call-window__status.is-live { color: var(--signal-9); }
+
+.ctf-call-window__voice { display: grid; place-items: center; padding: var(--space-6) 0; }
+.ctf-call-window__avatar { border-radius: 50%; padding: 6px; }
+.ctf-call-window__avatar.is-live { box-shadow: 0 0 0 2px var(--signal-9), var(--signal-glow); }
+
+.ctf-call-window__stage { position: relative; aspect-ratio: 16 / 10; background: #04060a; margin-top: var(--space-2); }
+.ctf-call-window__remote { width: 100%; height: 100%; object-fit: cover; }
+.ctf-call-window__placeholder { position: absolute; inset: 0; display: grid; place-items: center; }
+.ctf-call-window__local { position: absolute; right: 10px; bottom: 10px; width: 28%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; border: 2px solid rgba(255, 255, 255, 0.85); background: #0b0f17; transform: scaleX(-1); box-shadow: var(--shadow-md); }
+.ctf-call-window__local.is-off { opacity: 0.25; }
+
+.ctf-call-window__controls { display: flex; justify-content: center; gap: var(--space-4); padding: var(--space-4) var(--space-5) var(--space-5); }
+
+@media (max-width: 640px) {
+  .ctf-call-window { right: 10px; left: 10px; bottom: 10px; width: auto; }
+  .ctf-call-window.is-video { width: auto; }
+}

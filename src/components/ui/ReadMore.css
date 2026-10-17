@@ -1,0 +1,4 @@
+.ctf-readmore p { margin: 0; white-space: pre-line; overflow-wrap: anywhere; }
+.ctf-readmore p.is-clamped { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+.ctf-readmore__toggle { margin-top: var(--space-2); padding: var(--space-1) 0; border: 0; background: none; color: var(--accent-9); font: inherit; font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
+.ctf-readmore__toggle:hover { text-decoration: underline; }

@@ -1,0 +1,11 @@
+.ctf-drop { display: grid; gap: var(--space-3); padding: var(--space-4); border: 1px dashed var(--border-strong); border-radius: var(--radius-lg); background: var(--surface-1); transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out); }
+.ctf-drop.is-dragging { border-color: var(--accent-9); background: var(--accent-soft); }
+.ctf-drop.is-disabled { opacity: 0.6; }
+.ctf-drop__area { display: grid; justify-items: center; gap: var(--space-1); padding: var(--space-6) var(--space-4); border: 0; border-radius: var(--radius-md); background: transparent; color: var(--text-secondary); font: inherit; text-align: center; cursor: pointer; }
+.ctf-drop__area:hover:not(:disabled), .ctf-drop__area:focus-visible { background: var(--surface-2); color: var(--text-primary); outline: none; }
+.ctf-drop__area strong { color: var(--text-primary); font-size: var(--text-md); }
+.ctf-drop__area span { font-size: var(--text-xs); color: var(--text-tertiary); }
+.ctf-drop__area svg { color: var(--accent-9); }
+.ctf-drop__link { display: flex; align-items: center; gap: var(--space-2); }
+.ctf-drop__link > svg { flex: none; color: var(--text-tertiary); }
+.ctf-drop__link > :nth-child(2) { flex: 1; min-width: 0; }

@@ -1,0 +1,21 @@
+.ctf-depts { display: flex; flex-direction: column; gap: var(--space-5); }
+.ctf-depts__notice { display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); flex-wrap: wrap; }
+.ctf-depts__notice span { flex: 1; min-width: 200px; }
+.ctf-depts__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: var(--space-4); }
+.ctf-depts__card { position: relative; display: flex; gap: var(--space-4); height: 100%; padding: var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--border-subtle); background: var(--surface-1); color: inherit; text-decoration: none; }
+.ctf-depts__card:hover { border-color: var(--dept-accent); }
+.ctf-depts__card:focus-visible { outline: 2px solid var(--dept-accent); outline-offset: 2px; }
+.ctf-depts__icon { display: grid; place-items: center; width: 40px; height: 40px; flex: none; border-radius: var(--radius-sm); color: var(--dept-accent); background: color-mix(in srgb, var(--dept-accent) 14%, transparent); border: 1px solid color-mix(in srgb, var(--dept-accent) 35%, transparent); }
+.ctf-depts__body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.ctf-depts__body strong { font-size: var(--text-md, 1rem); }
+.ctf-depts__title { font-size: var(--text-xs); color: var(--dept-accent); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+.ctf-depts__body p { color: var(--text-tertiary); font-size: var(--text-sm); margin: var(--space-1) 0 var(--space-3); }
+.ctf-depts__meta { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; margin-top: auto; }
+.ctf-depts__admin { font-size: var(--text-xs); color: var(--text-secondary); }
+.ctf-depts__go { color: var(--text-faint); align-self: center; flex: none; }
+.ctf-depts__h2 { font-size: var(--text-md, 1rem); margin-bottom: var(--space-1); }
+.ctf-depts__muted { color: var(--text-tertiary); font-size: var(--text-sm); }
+.ctf-depts__legacy { list-style: none; margin: var(--space-3) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-sm); }
+.ctf-depts__legacy li { display: flex; align-items: center; gap: var(--space-2); }
+.ctf-depts__back { display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--text-sm); color: var(--text-tertiary); text-decoration: none; width: fit-content; }
+.ctf-depts__back:hover { color: var(--text-primary); }
