@@ -1,71 +1,54 @@
 
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Codex Tech Foundation Workspace
-  Public website sitemap.
-  Dynamic published content should be added by a
-  build-time script or Supabase Edge Function.
--->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://codex-tech-foundation-platfrom.vercel.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <url>
     <loc>https://codex-tech-foundation-platfrom.vercel.app/what-we-build</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://codex-tech-foundation-platfrom.vercel.app/projects</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://codex-tech-foundation-platfrom.vercel.app/case-studies</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://codex-tech-foundation-platfrom.vercel.app/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://codex-tech-foundation-platfrom.vercel.app/team</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://codex-tech-foundation-platfrom.vercel.app/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://codex-tech-foundation-platfrom.vercel.app/careers</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://codex-tech-foundation-platfrom.vercel.app/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://codex-tech-foundation-platfrom.vercel.app/start-project</loc>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
-
 </urlset>
