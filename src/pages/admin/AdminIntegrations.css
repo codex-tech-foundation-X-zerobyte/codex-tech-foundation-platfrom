@@ -1,0 +1,9 @@
+.ctf-int { display: flex; flex-direction: column; gap: var(--space-5); max-width: 900px; }
+.ctf-int__card { display: flex; flex-direction: column; gap: var(--space-4); }
+.ctf-int__card header { display: flex; align-items: flex-start; gap: var(--space-4); }
+.ctf-int__card header > div { flex: 1; min-width: 0; }
+.ctf-int__card h3 { font-size: var(--text-md, 1rem); }
+.ctf-int__card header p { color: var(--text-tertiary); font-size: var(--text-sm); }
+.ctf-int__icon { display: grid; place-items: center; width: 36px; height: 36px; flex: none; border-radius: var(--radius-sm); background: var(--surface-2, var(--surface-1)); color: var(--text-secondary); }
+.ctf-int__steps { margin: 0; padding-left: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-sm); color: var(--text-secondary); }
+.ctf-int__warn { color: var(--danger-text, #ef4444); font-size: var(--text-sm); }
