@@ -1,0 +1,39 @@
+.ctf-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ctf-brand__copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.ctf-brand__copy strong {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+
+.ctf-brand__copy small {
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.ctf-brand__mark { display: block; flex-shrink: 0; object-fit: contain; user-select: none; }
+.ctf-brand__logo { display: block; max-width: 100%; user-select: none; }
+.ctf-brand__logo-link { display: inline-block; line-height: 0; }
+
+/* Full-screen loading splash: the mark breathes while a route loads */
+.ctf-splash { min-height: 100vh; display: grid; place-items: center; align-content: center; gap: var(--space-5); }
+.ctf-splash .ctf-brand__mark { animation: ctf-splash-pulse 1.8s ease-in-out infinite; filter: drop-shadow(0 0 22px rgba(30, 120, 255, 0.35)); }
+.ctf-splash__bar { width: 120px; height: 3px; border-radius: 999px; background: var(--surface-3); overflow: hidden; }
+.ctf-splash__bar i { display: block; height: 100%; width: 40%; border-radius: inherit; background: linear-gradient(90deg, #1565ff, #00b8ff); animation: ctf-splash-slide 1.2s ease-in-out infinite; }
+@keyframes ctf-splash-pulse { 0%, 100% { transform: scale(1); opacity: 0.92; } 50% { transform: scale(1.06); opacity: 1; } }
+@keyframes ctf-splash-slide { 0% { transform: translateX(-100%); } 100% { transform: translateX(300%); } }
+@media (prefers-reduced-motion: reduce) { .ctf-splash .ctf-brand__mark, .ctf-splash__bar i { animation: none; } }
+:root[data-reduce-motion] .ctf-splash .ctf-brand__mark, :root[data-reduce-motion] .ctf-splash__bar i { animation: none; }

@@ -1,0 +1,22 @@
+.ctf-fin { display: grid; gap: var(--space-4); }
+.ctf-fin__body { display: grid; gap: var(--space-4); }
+.ctf-fin__bar { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--space-3); }
+.ctf-fin__bar > .ctf-funds__note { flex: 1 1 320px; }
+.ctf-fin__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.ctf-fin__neg { color: var(--danger-text, #ff8f8a); }
+.ctf-fin__buckets { display: grid; gap: 2px; font-size: var(--text-xs); color: var(--text-tertiary); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ctf-meter { display: grid; gap: 6px; min-width: 150px; }
+.ctf-meter__bar { height: 8px; border-radius: 99px; background: var(--surface-3); overflow: hidden; }
+.ctf-meter__bar > span { display: block; height: 100%; border-radius: 99px; background: var(--success-9, #2fb67c); }
+.ctf-meter__bar--near > span { background: var(--warning-9, #e0a43a); }
+.ctf-meter__bar--over > span { background: var(--danger-9, #e5484d); }
+.ctf-meter__row { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: var(--text-xs); color: var(--text-tertiary); }
+.ctf-fin__panel { display: grid; gap: 10px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border-subtle); background: var(--surface-1); }
+.ctf-fin__panel h4 { margin: 0; font-size: var(--text-sm); }
+.ctf-fin__panel ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ctf-fin__panel li { display: grid; gap: 4px; font-size: var(--text-sm); }
+.ctf-fin__panel small { color: var(--text-tertiary); font-size: var(--text-xs); }
+@media (max-width: 560px) { .ctf-fin__actions { width: 100%; } .ctf-fin__actions > * { flex: 1 1 auto; } }
+
+/* Wide tables scroll inside their container instead of squeezing every column to a word per line. */
+.ctf-fin table { min-width: 680px; }

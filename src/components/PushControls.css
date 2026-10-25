@@ -1,0 +1,25 @@
+.ctf-push-prompt { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); margin-bottom: var(--space-4); border: 1px solid var(--border-default); border-radius: var(--radius-lg); background: var(--surface-1); }
+.ctf-push-prompt > svg { flex: none; color: var(--accent-9); }
+.ctf-push-prompt p { margin: 0; flex: 1; min-width: 0; font-size: var(--text-sm); color: var(--text-secondary); }
+.ctf-push-prompt p strong { color: var(--text-primary); }
+.ctf-push-prompt__actions { display: flex; align-items: center; gap: var(--space-2); flex: none; }
+.ctf-push-prompt__close { display: inline-grid; place-items: center; width: 32px; height: 32px; border: 0; border-radius: var(--radius-md); background: transparent; color: var(--text-secondary); cursor: pointer; }
+.ctf-push-prompt__close:hover { background: var(--surface-2); }
+@media (max-width: 640px) {
+  .ctf-push-prompt { flex-wrap: wrap; }
+  .ctf-push-prompt p { flex-basis: calc(100% - 40px); }
+  .ctf-push-prompt__actions { width: 100%; justify-content: space-between; }
+}
+
+.ctf-pushset { display: grid; gap: var(--space-3); }
+.ctf-pushset__test { display: flex; }
+.ctf-pushreport { padding: var(--space-4); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); background: var(--surface-2); font-size: var(--text-sm); }
+.ctf-pushreport.is-bad { border-color: var(--border-warning); }
+.ctf-pushreport > strong { display: block; margin-bottom: var(--space-3); }
+.ctf-pushreport ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-3); }
+.ctf-pushreport li { display: flex; gap: var(--space-3); align-items: flex-start; }
+.ctf-pushreport li > svg { flex: none; margin-top: 2px; }
+.ctf-pushreport li.is-ok > svg { color: var(--success-9); }
+.ctf-pushreport li.is-bad > svg { color: var(--danger-9); }
+.ctf-pushreport li > div { display: grid; gap: 2px; min-width: 0; }
+.ctf-pushreport li small { color: var(--text-tertiary); overflow-wrap: anywhere; line-height: var(--leading-normal); }

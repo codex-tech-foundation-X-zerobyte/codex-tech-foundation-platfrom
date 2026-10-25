@@ -1,0 +1,13 @@
+.ctf-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+.ctf-page-header h1, .ctf-page-header h2 { font-size: var(--text-xl); font-weight: 650; }
+.ctf-page-header p { margin-top: var(--space-1); color: var(--text-tertiary); font-size: var(--text-sm); max-width: 62ch; }
+.ctf-page-header__actions { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+@media (max-width: 640px) {
+  .ctf-page-header { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+}

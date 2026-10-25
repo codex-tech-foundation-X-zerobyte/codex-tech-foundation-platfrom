@@ -1,0 +1,27 @@
+.ctf-palette-overlay {
+  position: fixed; inset: 0; z-index: var(--z-palette);
+  display: flex; justify-content: center; align-items: flex-start; padding: 12vh var(--space-4) var(--space-4);
+  background: rgba(3, 5, 9, 0.6); backdrop-filter: blur(6px);
+  animation: ctf-fade-in var(--duration-base) var(--ease-out);
+}
+.ctf-palette {
+  width: min(600px, 100%); max-height: 70vh; display: flex; flex-direction: column; overflow: hidden;
+  border-radius: 16px; border: 1px solid var(--border-strong); background: var(--surface-2);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0, 0, 0, 0.5);
+  animation: ctf-pop-in var(--duration-slow) var(--ease-out);
+}
+.ctf-palette__input { display: flex; align-items: center; gap: var(--space-3); padding: 0 var(--space-4); height: 54px; border-bottom: 1px solid var(--border-subtle); color: var(--text-tertiary); }
+.ctf-palette__input input { flex: 1; height: 100%; background: transparent; border: 0; outline: none; color: var(--text-primary); font-size: var(--text-base); }
+.ctf-palette__input input::placeholder { color: var(--text-faint); }
+.ctf-palette__list { overflow-y: auto; padding: var(--space-2); margin: 0; min-height: 0; }
+.ctf-palette__group { padding: var(--space-3) var(--space-3) var(--space-1); font-size: var(--text-xs); font-weight: 600; color: var(--text-faint); }
+.ctf-palette__item { display: flex; align-items: center; gap: var(--space-3); padding: 9px var(--space-3); border-radius: 10px; color: var(--text-secondary); cursor: pointer; font-size: var(--text-sm); }
+.ctf-palette__item.is-active { background: var(--accent-soft); color: var(--text-primary); }
+.ctf-palette__item svg { flex-shrink: 0; color: var(--text-tertiary); }
+.ctf-palette__item.is-active svg { color: var(--accent-7); }
+.ctf-palette__label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ctf-palette__hint { color: var(--text-faint); font-size: var(--text-xs); }
+.ctf-palette__empty { padding: var(--space-8) var(--space-4); text-align: center; color: var(--text-tertiary); font-size: var(--text-sm); list-style: none; }
+.ctf-palette__foot { display: flex; gap: var(--space-5); padding: var(--space-2) var(--space-4); border-top: 1px solid var(--border-subtle); color: var(--text-faint); font-size: var(--text-xs); background: var(--surface-1); }
+.ctf-palette__foot .kbd { margin-right: 2px; }
+@media (max-width: 640px) { .ctf-palette-overlay { padding-top: 6vh; } .ctf-palette__foot { display: none; } }
