@@ -1,0 +1,51 @@
+name: CI
+
+# Written but not executed in the environment this was developed in (no
+# network access to a GitHub Actions runner from there). Verify this
+# actually passes on a real push before relying on it as a merge gate.
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm install
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type-check + build
+        run: npm run build
+
+      - name: Tests
+        run: npm test
+
+      - name: Reject hardcoded secrets
+        run: |
+          if grep -rE "SUPABASE_SERVICE_ROLE_KEY\s*=\s*['\"]" src/ 2>/dev/null; then
+            echo "::error::Found what looks like a hardcoded service-role key in src/"
+            exit 1
+          fi
+          if grep -rE "R2_(ACCESS_KEY_ID|SECRET_ACCESS_KEY)\s*=\s*['\"]" src/ 2>/dev/null; then
+            echo "::error::Found what looks like a hardcoded R2 credential in src/"
+            exit 1
+          fi
+
+      - name: Reject disabled safety checks
+        run: |
+          if grep -rn "@ts-ignore\|@ts-nocheck" src/ 2>/dev/null; then
+            echo "::error::Found @ts-ignore or @ts-nocheck — fix the underlying type error instead"
+            exit 1
+          fi

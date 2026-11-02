@@ -1,0 +1,4 @@
+.ctf-wprojects { display: grid; gap: var(--space-8, 40px); }
+.ctf-wprojects__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: var(--space-3); }
+.ctf-wprojects__head h2 { font-size: var(--text-lg); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.ctf-wprojects__head span { color: var(--text-tertiary); font-size: var(--text-sm); }

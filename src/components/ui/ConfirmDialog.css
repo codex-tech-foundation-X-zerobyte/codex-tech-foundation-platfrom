@@ -1,0 +1,8 @@
+.ctf-confirm { display: grid; gap: var(--space-4); }
+.ctf-confirm__body { font-size: var(--text-sm); color: var(--text-secondary); line-height: var(--leading-normal); overflow-wrap: anywhere; }
+.ctf-confirm__body p { margin: 0 0 var(--space-2); }
+.ctf-confirm__body strong { color: var(--text-primary); }
+.ctf-confirm__body ul { margin: var(--space-2) 0 0; padding-left: 1.2em; display: grid; gap: var(--space-1); }
+.ctf-confirm__type { display: grid; gap: var(--space-2); font-size: var(--text-sm); color: var(--text-secondary); }
+.ctf-confirm__type strong { color: var(--text-primary); font-family: var(--font-mono); overflow-wrap: anywhere; }
+.ctf-confirm__error { margin: 0; padding: var(--space-3); border: 1px solid var(--border-danger); border-radius: var(--radius-md); background: var(--danger-soft); color: var(--text-primary); font-size: var(--text-sm); }

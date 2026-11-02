@@ -1,0 +1,9 @@
+.ctf-devtest { display: flex; flex-direction: column; gap: var(--space-4); }
+.ctf-devtest__allow { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); background: var(--accent-soft); border: 1px solid var(--border-accent); font-size: var(--text-sm); color: var(--text-secondary); }
+.ctf-devtest__tests { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+.ctf-devtest__tests > div { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+.ctf-devtest__tests small { font-size: var(--text-xs); color: var(--text-faint); }
+.ctf-devtest__meter { width: 100%; height: 8px; border-radius: 999px; background: var(--surface-3); overflow: hidden; }
+.ctf-devtest__meter i { display: block; height: 100%; background: var(--signal-9); border-radius: inherit; transition: width 60ms linear; }
+.ctf-devtest__video { width: 100%; max-width: 280px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-md); background: #04060a; border: 1px solid var(--border-default); transform: scaleX(-1); }
+@media (max-width: 640px) { .ctf-devtest__tests { grid-template-columns: minmax(0, 1fr); } }
